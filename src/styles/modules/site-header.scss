@@ -1,9 +1,117 @@
-/*================ Site Header ================*/
-.site-logo {
-  display: block;
+/* ==========================================================================
+  Site Header Styles
+========================================================================== */
+.site-header {
+  display: flex;
+  align-items: center;
+  height: 4.375rem;
+  border-bottom: 1px solid $color-border;
+  box-shadow: 0 1px rgba($color-border, 0.3);
+}
+.site-header__item {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
 
+//----------Menu Toggle
+.site-header__menu-toggle {
+  padding: 0 1.875rem;
+  border-right: 1px solid $color-border;
+  .icon-menu-toggle {
+    width: 25px;
+    height: 25px;
+    color: $color-grey;
+    cursor: pointer;
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
+
+//----------Center Content Area
+.site-header__center-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  padding: 0 1.875rem;
+  border-right: 1px solid $color-border;
+}
+
+//----------Site Logo
+.site-logo {
+  padding: 0.5rem 0;
+  font-family: $font-stack-header;
+  text-decoration: none;
+  color: $color-primary;
+}
+.site-header__logo-image {
+  display: block;
   img {
-    display: block;
-    width: 100%;
+    vertical-align: bottom;
+  }
+}
+
+//----------Header Social
+.site-header__social {
+  @include media-query($small) {
+    display: none;
+  }
+}
+.header-social__item {
+  margin-right: 0.75rem;
+  color: $color-grey;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+  &:last-of-type {
+    margin-right: 0;
+  }
+  &:hover {
+    color: $color-primary;
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+//----------Header Search
+.site-header__search {
+  width: 75px;
+  justify-content: center;
+  @include media-query($small) {
+    display: none;
+  }
+  .search-toggle {
+    color: $color-grey;
+    cursor: pointer;
+    &:hover {
+      color: $color-primary;
+    }
+    .icon {
+      width: 25px;
+      height: 25px;
+      transition: color 0.15s ease-in-out;
+    }
+  }
+}
+
+//----------Header Cart
+.site-header__cart {
+  width: 75px;
+  justify-content: center;
+  border-left: 1px solid $color-border;
+  .cart-toggle {
+    color: $color-grey;
+    cursor: pointer;
+    &:hover {
+      color: $color-primary;
+    }
+    .icon {
+      width: 40px;
+      height: 40px;
+      transition: color 0.15s ease-in-out;
+    }
   }
 }

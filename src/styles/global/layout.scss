@@ -4,7 +4,23 @@ html {
   background-color: $color-body;
 }
 
-.page-width {
+/*================ Base Image Styles ================*/
+img {
+  max-width: 100%;
+  font-style: italic; //Offset `alt` text from surrounding copy
+  vertical-align: middle; //Setting `vertical-align` removes the whitespace that appears under `img`
+}
+
+/*================ Base list styles ================*/
+// Remove extra vertical spacing when nesting lists.
+li {
+  > ul,
+  > ol {
+    margin-bottom: 0;
+  }
+}
+
+.container {
   @include clearfix();
   max-width: $width-site;
   padding: 0 $gutter;

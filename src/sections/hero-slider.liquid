@@ -1,0 +1,35 @@
+<section class="hero-slider">
+  <div id="heroSlider">
+    <div class="hero-slide" style="background-image: url({{ 'placeholder-hero-1.jpg' | asset_img_url: '1400x' }});">
+      <div class="hero-slide__overlay">
+        <div class="container">
+          <h2 class="hero-slide__heading">Coffee at its finest</h2>
+          <h3 class="hero-slide__sub-heading">Lorem ipsum dolor sit amat</h3>
+          <div class="hero-slide__cta">
+            <a href="#0" class="button button--primary">Pour a cup</a>
+          </div>
+          {% comment %} /__cta {% endcomment %}
+        </div>
+        {% comment %} /.container {% endcomment %}
+      </div>
+      {% comment %} /__overlay {% endcomment %}
+    </div>
+    {% comment %} /.hero-slide {% endcomment %}
+    <div class="hero-slide" style="background-image: url({{ 'placeholder-hero-1.jpg' | asset_img_url: '1400x' }});">
+      <div class="hero-slide__overlay">
+        <h2 class="hero-slide__heading">Coffee at its finest</h2>
+        <h3 class="hero-slide__sub-heading">Lorem ipsum dolor sit amat</h3>
+        <div class="hero-slide__cta">
+          <a href="#0" class="button button--primary">Pour a cup</a>
+        </div>
+        {% comment %} /__cta {% endcomment %}
+      </div>
+      {% comment %} /__overlay {% endcomment %}
+    </div>
+    {% comment %} /.hero-slide {% endcomment %}
+  </div>
+  <div class="hero-slider__dots" id="heroSliderDots">
+
+  </div>
+  {% comment %} /__dots {% endcomment %}
+</section>

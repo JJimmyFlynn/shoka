@@ -2,7 +2,7 @@
 /*============================================================================
   Shoka | Built with Slate
     - You cannot use native CSS/Sass @imports in this file without a build script
-    - Do not use nested BEM Selector, Shopify used an outdated version of SASS
+    - Do not use nested BEM Selector, Shopify uses an outdated version of SASS
       which cannot compile them 
 ==============================================================================*/
 
@@ -12,19 +12,26 @@
 /*================ SETTINGS ================*/
 @import url('settings/variables.scss.liquid');
 
+/*================ VENDOR ================*/
+@import url('vendor/slick.css');
+
 /*================ COMMON ================*/
 @import url('global/normalize.scss');
 @import url('global/slate-reset.scss');
 @import url('global/helper-classes.scss');
 @import url('global/grid.scss');
 @import url('global/layout.scss');
+@import url('global/typography.scss');
 @import url('global/icons.scss');
 @import url('global/rte.scss');
 @import url('global/responsive-tables.scss');
-@import url('global/links-buttons.scss');
+@import url('global/buttons.scss');
 @import url('global/forms.scss');
 @import url('global/blank-states.scss');
 
 /*================ MODULES ================*/
 @import url('modules/site-header.scss');
 @import url('modules/gift-card-template.scss');
+
+/*================ SECTIONS ================*/
+@import url('sections/hero-slider.scss');

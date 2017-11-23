@@ -14,6 +14,7 @@ window.theme = window.theme || {};
 /*================ Sections ================*/
 // =require sections/product.js
 // =require sections/hero-slider.js
+// =require sections/header.js
 
 /*================ Templates ================*/
 // =require templates/customers-addresses.js

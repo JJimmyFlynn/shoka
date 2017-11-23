@@ -1,10 +1,15 @@
 /* ==========================================================================
   Site Header Styles
 ========================================================================== */
+#shopify-section-header {
+  z-index: $z-index-header;
+}
+
 .site-header {
   display: flex;
   align-items: center;
   height: 4.375rem;
+  background-color: white;
   border-bottom: 1px solid $color-border;
   box-shadow: 0 1px rgba($color-border, 0.3);
 }
@@ -14,7 +19,9 @@
   height: 100%;
 }
 
-//----------Menu Toggle
+//-----------------------------------------
+// Menu Toggle
+//-----------------------------------------
 .site-header__menu-toggle {
   padding: 0 1.875rem;
   border-right: 1px solid $color-border;
@@ -29,7 +36,9 @@
   }
 }
 
-//----------Center Content Area
+//-----------------------------------------
+// Center Content Area
+//-----------------------------------------
 .site-header__center-content {
   display: flex;
   justify-content: space-between;
@@ -39,7 +48,9 @@
   border-right: 1px solid $color-border;
 }
 
-//----------Site Logo
+//-----------------------------------------
+// Site Logo
+//-----------------------------------------
 .site-logo {
   padding: 0.5rem 0;
   font-family: $font-stack-header;
@@ -53,11 +64,13 @@
   }
 }
 
-//----------Header Social
+//-----------------------------------------
+// Header Social
+//-----------------------------------------
 .site-header__social {
-  @include media-query($small) {
-    display: none;
-  }
+  // @include media-query($small) {
+  //   display: none;
+  // }
 }
 .header-social__item {
   margin-right: 0.75rem;
@@ -76,13 +89,15 @@
   }
 }
 
-//----------Header Search
+//-----------------------------------------
+// Header Search Toggle
+//-----------------------------------------
 .site-header__search {
   width: 75px;
   justify-content: center;
-  @include media-query($small) {
-    display: none;
-  }
+  // @include media-query($small) {
+  //   display: none;
+  // }
   .search-toggle {
     color: $color-grey;
     cursor: pointer;
@@ -97,7 +112,9 @@
   }
 }
 
-//----------Header Cart
+//-----------------------------------------
+// Header Cart Toggle
+//-----------------------------------------
 .site-header__cart {
   width: 75px;
   justify-content: center;

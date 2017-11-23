@@ -1,3 +1,6 @@
+//--------------------------------------------------------------
+// Hero Slider Styles
+//--------------------------------------------------------------
 .hero-slider {
   position: relative;
   .hero-slider__dots {
@@ -36,6 +39,10 @@
       }
     }
   }
+
+  //-----------------------------------------
+  // Hero Slider Slide
+  //-----------------------------------------
   .hero-slide {
     position: relative;
     height: 43.75rem;
@@ -66,6 +73,12 @@
   .hero-slide__heading {
     margin: 0 0 4.375rem 0;
     font-size: 5rem;
+    // @include media-query($medium) {
+    //   font-size: 3.5rem;
+    // }
+    // @include media-query($x-small) {
+    //   font-size: 2rem;
+    // }
   }
   .hero-slide__sub-heading {
     margin: 0 0 4.375rem 0;

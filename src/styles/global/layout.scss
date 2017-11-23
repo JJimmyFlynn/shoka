@@ -1,17 +1,23 @@
-/*================ General layout styles ================*/
+//--------------------------------------------------------------
+// General Layout Styles
+//--------------------------------------------------------------
 body,
 html {
   background-color: $color-body;
 }
 
-/*================ Base Image Styles ================*/
+//-----------------------------------------
+// Images
+//-----------------------------------------
 img {
   max-width: 100%;
   font-style: italic; //Offset `alt` text from surrounding copy
   vertical-align: middle; //Setting `vertical-align` removes the whitespace that appears under `img`
 }
 
-/*================ Base list styles ================*/
+//-----------------------------------------
+// Lists
+//-----------------------------------------
 // Remove extra vertical spacing when nesting lists.
 li {
   > ul,
@@ -20,9 +26,12 @@ li {
   }
 }
 
+//-----------------------------------------
+// Containers
+//-----------------------------------------
 .container {
   @include clearfix();
-  max-width: $width-site;
+  max-width: $container;
   padding: 0 $gutter;
   margin: 0 auto;
 }

@@ -1,4 +1,6 @@
-/*================ Buttons ================*/
+//--------------------------------------------------------------
+// Buttons Styles
+//--------------------------------------------------------------
 .button {
   @include prefix('user-select', 'none', moz ms webkit spec);
   @include prefix(appearance, none, webkit moz spec);
@@ -17,6 +19,9 @@
   transition: background-color 0.15s ease-in-out;
 }
 
+//-----------------------------------------
+// Primary Button
+//-----------------------------------------
 .button--primary {
   background-color: $color-primary;
   &:hover {

@@ -5,70 +5,68 @@
     }
   {% endif %}
 </style>
-<div data-section-id="{{ section.id }}" data-section-type="header-section">
-  <header class="site-header" role="banner">
-    <div class="site-header__item site-header__menu-toggle">
-      {% include 'icon-menu-toggle' %}
-    </div>
-    {% comment %}/__menu-toggle{% endcomment %}
-    <div class="site-header__item site-header__center-content">
-      {% if template.name == 'index' %}
-        <h1 class="no-margin" itemscope itemtype="http://schema.org/Organization">
-      {% else %}
-        <div class="h1" itemscope itemtype="http://schema.org/Organization">
-      {% endif %}
-          <a href="/" itemprop="url" class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
-            {% if section.settings.logo != blank %}
-            {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
-              <img src="{{ section.settings.logo | img_url: image_size }}"
-                   srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
-                   alt="{{ section.settings.logo.alt | default: shop.name }}"
-                   itemprop="logo">
-            {% else %}
-              {{ shop.name }}
-            {% endif %}
-          </a>
-      {% if template.name == 'index' %}
-        </h1>
-      {% else %}
-        </div>
-        {% comment %}/.h1{% endcomment %}
-      {% endif %}
-      <div class="site-header__item site-header__social header-social">
-        <a href="#0" class="header-social__item">
-          <span class="visually-hidden">{{ shop.name }} on Facebook</span>
-          {% include 'icon-facebook' %}
+<header class="site-header" role="banner">
+  <div class="site-header__item site-header__menu-toggle">
+    {% include 'icon-menu-toggle' %}
+  </div>
+  {% comment %}/__menu-toggle{% endcomment %}
+  <div class="site-header__item site-header__center-content">
+    {% if template.name == 'index' %}
+      <h1 class="no-margin" itemscope itemtype="http://schema.org/Organization">
+    {% else %}
+      <div class="h1" itemscope itemtype="http://schema.org/Organization">
+    {% endif %}
+        <a href="/" itemprop="url" class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
+          {% if section.settings.logo != blank %}
+          {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
+            <img src="{{ section.settings.logo | img_url: image_size }}"
+                  srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                  alt="{{ section.settings.logo.alt | default: shop.name }}"
+                  itemprop="logo">
+          {% else %}
+            {{ shop.name }}
+          {% endif %}
         </a>
-        <a href="#0" class="header-social__item">
-          <span class="visually-hidden">{{ shop.name }} on Instagram</span>
-          {% include 'icon-instagram' %}
-        </a>
-        <a href="#0" class="header-social__item">
-          <span class="visually-hidden">{{ shop.name }} on Twitter</span>
-          {% include 'icon-twitter' %}
-        </a>
-        <a href="#0" class="header-social__item">
-          <span class="visually-hidden">{{ shop.name }} on Pinterest</span>
-          {% include 'icon-pinterest' %}
-        </a>
+    {% if template.name == 'index' %}
+      </h1>
+    {% else %}
       </div>
-      {% comment %}/.header-social{% endcomment %}
+      {% comment %}/.h1{% endcomment %}
+    {% endif %}
+    <div class="site-header__item site-header__social header-social">
+      <a href="#0" class="header-social__item">
+        <span class="visually-hidden">{{ shop.name }} on Facebook</span>
+        {% include 'icon-facebook' %}
+      </a>
+      <a href="#0" class="header-social__item">
+        <span class="visually-hidden">{{ shop.name }} on Instagram</span>
+        {% include 'icon-instagram' %}
+      </a>
+      <a href="#0" class="header-social__item">
+        <span class="visually-hidden">{{ shop.name }} on Twitter</span>
+        {% include 'icon-twitter' %}
+      </a>
+      <a href="#0" class="header-social__item">
+        <span class="visually-hidden">{{ shop.name }} on Pinterest</span>
+        {% include 'icon-pinterest' %}
+      </a>
     </div>
-    {% comment %}/__center-content{% endcomment %}
-    <div class="site-header__item site-header__search">
-      <span id="header-search-toggle" class="search-toggle">
-        {% include 'icon-search' %}
-      </span>
-    </div>
-    {% comment %}/__search{% endcomment %}
-    <div class="site-header__item site-header__cart">
-      <span id="header-cart-toggle" class="cart-toggle">
-        {% include 'icon-cart' %}
-      </span>
-    </div>
-    {% comment %}/__cart{% endcomment %}
-  </header>
-</div>
+    {% comment %}/.header-social{% endcomment %}
+  </div>
+  {% comment %}/__center-content{% endcomment %}
+  <div class="site-header__item site-header__search">
+    <span id="header-search-toggle" class="search-toggle">
+      {% include 'icon-search' %}
+    </span>
+  </div>
+  {% comment %}/__search{% endcomment %}
+  <div class="site-header__item site-header__cart">
+    <span id="header-cart-toggle" class="cart-toggle">
+      {% include 'icon-cart' %}
+    </span>
+  </div>
+  {% comment %}/__cart{% endcomment %}
+</header>
 
 {% comment %}
 <div data-section-id="{{ section.id }}" data-section-type="header-section">

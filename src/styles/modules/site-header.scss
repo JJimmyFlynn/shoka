@@ -1,7 +1,7 @@
 /* ==========================================================================
   Site Header Styles
 ========================================================================== */
-#shopify-section-header {
+#shopify-section-header { // ID is renecessary becasue Shopify wraps sections in a div with a unique ID
   z-index: $z-index-header;
 }
 
@@ -68,9 +68,9 @@
 // Header Social
 //-----------------------------------------
 .site-header__social {
-  // @include media-query($small) {
-  //   display: none;
-  // }
+  @include breakpoint($medium) {
+    display: none;
+  }
 }
 .header-social__item {
   margin-right: 0.75rem;
@@ -95,9 +95,9 @@
 .site-header__search {
   width: 75px;
   justify-content: center;
-  // @include media-query($small) {
-  //   display: none;
-  // }
+  @include breakpoint($small) {
+    display: none;
+  }
   .search-toggle {
     color: $color-grey;
     cursor: pointer;

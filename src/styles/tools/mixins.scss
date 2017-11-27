@@ -47,7 +47,7 @@
 
 /*================ Media Query Mixin ================*/
 @mixin breakpoint($point) {
-  @media screen and (min-width: $point) { @content; }
+  @media screen and (max-width: $point) { @content; }
 }
 
 /*================ Responsive Show/Hide Helper ================*/

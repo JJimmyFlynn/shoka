@@ -1,0 +1,19 @@
+//--------------------------------------------------------------
+// Image with Text Index Section Styles
+//--------------------------------------------------------------
+.image-with-text {
+
+  //-----------------------------------------
+  // Text Block
+  //-----------------------------------------
+  .text-block {
+    background-color: $color-secondary;
+  }
+  .text-block__inner {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .text-block__heading {
+    font-size: 2rem;
+  }
+}

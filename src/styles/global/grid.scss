@@ -1,0 +1,49 @@
+//--------------------------------------------------------------
+// A basic flexbox grid
+//--------------------------------------------------------------
+.flexgrid {
+  display: flex;
+  justify-content: space-around;
+  .flexgrid__item {
+    flex: 1;
+  }
+}
+
+//-----------------------------------------
+// Guttered Flex Grid
+//-----------------------------------------
+.flexgrid--guttered {
+  margin-left: -$gutter;
+  margin-right: -$gutter;
+  .flexgrid__item {
+    padding-left: $gutter;
+    padding-right: $gutter;
+  }
+}
+
+//-----------------------------------------
+// One Half Grid
+//-----------------------------------------
+.flexgrid--one-half {
+  .flexgrid__item {
+    width: calc(50% - #{$gutter});
+  }
+}
+
+//-----------------------------------------
+// One Third Grid
+//-----------------------------------------
+.flexgrid--one-third {
+  .flexgrid__item {
+    width: calc(33% - #{$gutter});
+  }
+}
+
+//-----------------------------------------
+// One Fourth Grid
+//-----------------------------------------
+.flexgrid--one-fourth {
+  .flexgrid__item {
+    width: calc(25% - #{$gutter});
+  }
+}

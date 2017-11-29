@@ -1,5 +1,5 @@
 <section class="hero-slider">
-  <div id="heroSlider">
+  <div id="heroSlider" class="hero-slider__inner slider-loading">
     <div class="hero-slide" style="background-image: url({{ 'placeholder-hero-1.jpg' | asset_img_url: '1400x', format: 'pjpg' }});">
       <div class="hero-slide__overlay">
         <div class="container">
@@ -45,3 +45,16 @@
   </div>
   {% comment %} /__dots {% endcomment %}
 </section>
+
+{% schema %}
+  {
+    "name": "Hero Slider",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Hero Slider",
+        "category": "Carousel"
+      }
+    ]
+  }
+{% endschema %}

@@ -14,6 +14,8 @@
    if( !heroSlider.html() ) {
      return;
    }
+
+   heroSlider.on('init', () => heroSlider.removeClass('slider-loading'));
     //  Initialize slick slider
    heroSlider.slick({
      arrows: false,

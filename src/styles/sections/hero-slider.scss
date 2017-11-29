@@ -3,49 +3,29 @@
 //--------------------------------------------------------------
 .hero-slider {
   position: relative;
-  .hero-slider__dots {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    .slick-dots {
-      margin: 0;
-      padding: 0 4rem 2rem;
-      text-align: right;
-      li {
-        display: inline-block;
-        margin-right: 1rem;
-        &:last-of-type {
-          margin-right: 0;
-        }
-        &.slick-active button {
-          background-color: rgba(white, 1);
-        }
-      }
-      button {
-        @include prefix(appearance, none, webkit moz spec);
-        height: 0.5rem;
-        width: 3.125rem;;
-        background-color: rgba(white, 0.6);
-        font-size: 0;
-        border: none;
-        border-radius: 0;
-        transition: background-color 0.15s ease-in-out;
-        &:hover {
-          background-color: rgba(white, 1);
-        }
-        &:focus {
-          outline: none;
-        }
-      }
+  .hero-slider__inner {
+    height: 43.75rem;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+    @include breakpoint($medium) {
+      height: 30rem;
+    }
+    @include breakpoint($small) {
+      height: 25rem;
+    }
+    &.slider-loading { // Hide slider until it has initialized
+      opacity: 0;
+    }
+    .slick-list,
+    .slick-track { // To use fixed height for slick slider
+      height: 100%;
     }
   }
-
   //-----------------------------------------
   // Hero Slider Slide
   //-----------------------------------------
   .hero-slide {
     position: relative;
-    height: 43.75rem;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -73,14 +53,60 @@
   .hero-slide__heading {
     margin: 0 0 4.375rem 0;
     font-size: 5rem;
-    // @include media-query($medium) {
-    //   font-size: 3.5rem;
-    // }
-    // @include media-query($x-small) {
-    //   font-size: 2rem;
-    // }
+    @include breakpoint($medium) {
+      font-size: 3.5rem;
+    }
+    @include breakpoint($small) {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
   }
   .hero-slide__sub-heading {
     margin: 0 0 4.375rem 0;
+    @include breakpoint($small) {
+      margin-bottom: 2rem;
+    }
+  }
+  //-----------------------------------------
+  // Hero Slider Navigation Dots
+  //-----------------------------------------
+  .hero-slider__dots {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    .slick-dots {
+      margin: 0;
+      padding: 0 4rem 2rem;
+      text-align: right;
+      @include breakpoint($small) {
+        text-align: center;
+      }
+      li {
+        display: inline-block;
+        margin-right: 1rem;
+        &:last-of-type {
+          margin-right: 0;
+        }
+        &.slick-active button {
+          background-color: rgba(white, 1);
+        }
+      }
+      button {
+        @include prefix(appearance, none, webkit moz spec);
+        height: 0.5rem;
+        width: 3.125rem;;
+        background-color: rgba(white, 0.6);
+        font-size: 0;
+        border: none;
+        border-radius: 0;
+        transition: background-color 0.15s ease-in-out;
+        &:hover {
+          background-color: rgba(white, 1);
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+    }
   }
 }

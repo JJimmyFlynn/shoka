@@ -1,9 +1,9 @@
 //-----------------------------------------
 // Color Variables
 //-----------------------------------------
-$color-primary: #C33A2F;
+$color-primary  : #C33A2F;
 $color-secondary: #EFEBEB;
-$color-grey: #585858;
+$color-grey     : #585858;
 
 // Text colors
 $color-body-text: {{ settings.color_body_text }};
@@ -15,46 +15,54 @@ $color-body: #fff;
 $color-border: #B7B7B7;
 
 // Helper colors for form error states
-$color-disabled: #000;
+$color-disabled       : #000;
 $color-disabled-border: #000;
-$color-error: #000;
-$color-error-bg: #000;
-$color-success: #000;
-$color-success-bg: #000;
+$color-error          : #000;
+$color-error-bg       : #000;
+$color-success        : #000;
+$color-success-bg     : #000;
 
 //-----------------------------------------
 // Typography Variables
 //-----------------------------------------
 $font-weight-normal: 400;
-$font-weight-bold: 700;
-$font-line-height: 1.25;
+$font-weight-bold:   700;
+$font-line-height:   1.25;
 
-$font-stack-header: 'Volkhov', serif;
+$font-stack-header : 'Volkhov', serif;
 $font-weight-header: $font-weight-bold;
 
 $font-stack-body: 'Open Sans', sans-serif;
-$font-size-base: {{ settings.type_base_size }};
+$font-size-base : {{     settings.type_base_size }};
 
 //-----------------------------------------
 // Sizing Variables
 //-----------------------------------------
-$x-small: 320px;
-$small: 550px;
-$medium: 800px;
-$large: 1024px;
-$container: 1200px;
+$x-small: 20em;      // 320px
+$small  : 34.375em;  // 550px
+$medium : 50em;      // 800px
+$large  : 64em;      // 1024px
+
+//-----------------------------------------
+// Breakpoint Variables
+//-----------------------------------------
+$x-small--up: 'min-width: #{$x-small}';
+$small--up  : 'min-width: #{$small}';
+$medium--up : 'min-width: #{$medium}';
+$large--up  : 'min-width: #{$large}';
 
 //-----------------------------------------
 // Grid Variables
 //-----------------------------------------
-$gutter: 20px;
+$container: 75rem;
+$gutter   : 1.25rem;
 
 //-----------------------------------------
 // Z-Index Variables
 //-----------------------------------------
 $z-index-dropdown: 2;
-$z-index-modal: 3;
-$z-index-header: 4;
+$z-index-modal   : 3;
+$z-index-header  : 4;
 $z-index-skip-to-content: 10000; // really high to be safe of app markup
 
 //-----------------------------------------

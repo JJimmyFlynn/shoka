@@ -4,14 +4,14 @@
 .hero-slider {
   position: relative;
   .hero-slider__inner {
-    height: 43.75rem;
+    height: 25rem;
     opacity: 1;
     transition: opacity 0.2s ease;
-    @include breakpoint($medium) {
+    @include breakpoint($small--up) {
       height: 30rem;
     }
-    @include breakpoint($small) {
-      height: 25rem;
+    @include breakpoint($medium--up) {
+      height: 43.75rem;
     }
     &.slider-loading { // Hide slider until it has initialized
       opacity: 0;
@@ -51,20 +51,20 @@
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   }
   .hero-slide__heading {
-    margin: 0 0 4.375rem 0;
-    font-size: 5rem;
-    @include breakpoint($medium) {
+    margin: 0 0 3rem 0;
+    font-size: 2rem;
+    @include breakpoint($small--up) {
       font-size: 3.5rem;
     }
-    @include breakpoint($small) {
-      font-size: 2rem;
-      margin-bottom: 2rem;
+    @include breakpoint($medium--up) {
+      font-size: 5rem;
+      margin-bottom: 3.5rem;
     }
   }
   .hero-slide__sub-heading {
-    margin: 0 0 4.375rem 0;
-    @include breakpoint($small) {
-      margin-bottom: 2rem;
+    margin: 0 0 2rem 0;
+    @include breakpoint($medium--up) {
+      margin-bottom: 4.375rem;
     }
   }
   //-----------------------------------------
@@ -77,9 +77,9 @@
     .slick-dots {
       margin: 0;
       padding: 0 4rem 2rem;
-      text-align: right;
-      @include breakpoint($small) {
-        text-align: center;
+      text-align: center;
+      @include breakpoint($medium--up) {
+        text-align: right;
       }
       li {
         display: inline-block;
@@ -91,7 +91,7 @@
           background-color: rgba(white, 1);
         }
       }
-      button {
+      button { // Slick dots
         @include prefix(appearance, none, webkit moz spec);
         height: 0.5rem;
         width: 3.125rem;;

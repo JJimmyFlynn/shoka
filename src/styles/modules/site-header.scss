@@ -68,8 +68,9 @@
 // Header Social
 //-----------------------------------------
 .site-header__social {
-  @include breakpoint($medium) {
-    display: none;
+  display: none;
+  @include breakpoint($medium--up) {
+    display: flex;
   }
 }
 .header-social__item {
@@ -93,10 +94,11 @@
 // Header Search Toggle
 //-----------------------------------------
 .site-header__search {
+  display: none;
   width: 75px;
   justify-content: center;
-  @include breakpoint($small) {
-    display: none;
+  @include breakpoint($medium--up) {
+    display: flex;
   }
   .search-toggle {
     color: $color-grey;

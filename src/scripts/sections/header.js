@@ -6,7 +6,7 @@
    * @namespace siteHeader
  */
 
-theme.SiteHeader = (function() {
+shoka.SiteHeader = (function() {
 
   // Initialize Stickybits
   stickybits(document.getElementById('shopify-section-header'));

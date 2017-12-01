@@ -6,7 +6,7 @@
  * @namespace password
  */
 
-theme.customerLogin = (function() {
+shoka.customerLogin = (function() {
   var config = {
     recoverPasswordForm: '#RecoverPassword',
     hideRecoverPasswordLink: '#HideRecoverPasswordLink'

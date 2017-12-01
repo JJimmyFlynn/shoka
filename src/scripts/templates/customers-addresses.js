@@ -7,7 +7,7 @@
  * @namespace customerAddresses
  */
 
-theme.customerAddresses = (function() {
+shoka.customerAddresses = (function() {
   var $newAddressForm = $('#AddressNewForm');
 
   if (!$newAddressForm.length) {

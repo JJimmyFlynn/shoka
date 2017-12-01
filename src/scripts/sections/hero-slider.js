@@ -6,7 +6,7 @@
    * @namespace heroSlider
  */
 
- theme.HeroSlider = (function() {
+ shoka.HeroSlider = (function() {
     //  Get instance of slider
    var heroSlider = $('#heroSlider');
 

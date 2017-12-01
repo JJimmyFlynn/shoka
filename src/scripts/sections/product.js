@@ -6,7 +6,7 @@
    * @namespace product
  */
 
-theme.Product = (function() {
+shoka.Product = (function() {
 
   var selectors = {
     addToCart: '[data-add-to-cart]',

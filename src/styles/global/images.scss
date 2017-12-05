@@ -1,0 +1,40 @@
+//--------------------------------------------------------------
+// Site-wide Image Styles
+//--------------------------------------------------------------
+
+//-----------------------------------------
+// Responsive + Best Practices Images
+//-----------------------------------------
+img {
+  max-width: 100%;
+  font-style: italic; //Offset `alt` text from surrounding copy
+  vertical-align: middle; //Setting `vertical-align` removes the whitespace that appears under `img`
+}
+
+//-----------------------------------------
+// Lazy Loaded Images
+//-----------------------------------------
+.is-lazyloaded {
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+.lazyloaded {
+  opacity: 1;
+}
+
+//-----------------------------------------
+// Image Wrapper (for aspect ratios)
+//-----------------------------------------
+.image-wrapper {
+  position: relative;
+  height: 0;
+  img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

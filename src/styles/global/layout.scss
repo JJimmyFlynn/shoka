@@ -7,15 +7,6 @@ html {
 }
 
 //-----------------------------------------
-// Images
-//-----------------------------------------
-img {
-  max-width: 100%;
-  font-style: italic; //Offset `alt` text from surrounding copy
-  vertical-align: middle; //Setting `vertical-align` removes the whitespace that appears under `img`
-}
-
-//-----------------------------------------
 // Lists
 //-----------------------------------------
 // Remove extra vertical spacing when nesting lists.

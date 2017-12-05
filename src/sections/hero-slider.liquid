@@ -1,12 +1,16 @@
-<section class="hero-slider">
+<section class="hero-slider index-section">
   <div id="heroSlider" class="hero-slider__inner slider-loading">
-    <div class="hero-slide" style="background-image: url({{ 'placeholder-hero-1.jpg' | asset_img_url: '1400x', format: 'pjpg' }});">
+  {% for block in section.blocks %}
+    <div class="hero-slide hero-slide--{{ block.id }} is-lazyloaded lazyload" 
+    data-bgset="{% include 'bg-set', image: block.settings.slide_image %}"  
+    data-sizes="auto" 
+    data-parent-fit="cover" {{ block.shopify_attributes }}>
       <div class="hero-slide__overlay">
         <div class="container">
-          <h2 class="hero-slide__heading">The Finest Coffees</h2>
-          <h3 class="hero-slide__sub-heading">Lorem ipsum dolor sit amat</h3>
+          <h2 class="hero-slide__heading">{{ block.settings.slide_heading }}</h2>
+          <h3 class="hero-slide__sub-heading">{{ block.settings.slide_sub_heading }}</h3>
           <div class="hero-slide__cta">
-            <a href="#0" class="button button--primary">Pour a cup</a>
+            <a href="{{ block.settings.slide_button_link }}" class="button button--primary">{{ block.settings.slide_button_text }}</a>
           </div>
           {% comment %} /__cta {% endcomment %}
         </div>
@@ -15,31 +19,9 @@
       {% comment %} /__overlay {% endcomment %}
     </div>
     {% comment %} /.hero-slide {% endcomment %}
-    <div class="hero-slide" style="background-image: url({{ 'placeholder-hero-2.jpg' | asset_img_url: '1400x', format: 'pjpg' }});">
-      <div class="hero-slide__overlay">
-        <h2 class="hero-slide__heading">Artisan Coffeware</h2>
-        <h3 class="hero-slide__sub-heading">Lorem ipsum dolor sit amat</h3>
-        <div class="hero-slide__cta">
-          <a href="#0" class="button button--primary">Browse Accessories</a>
-        </div>
-        {% comment %} /__cta {% endcomment %}
-      </div>
-      {% comment %} /__overlay {% endcomment %}
-    </div>
-    {% comment %} /.hero-slide {% endcomment %}
-    <div class="hero-slide" style="background-image: url({{ 'placeholder-hero-3.jpg' | asset_img_url: '1400x', format: 'pjpg' }});">
-      <div class="hero-slide__overlay">
-        <h2 class="hero-slide__heading">Premium Beans</h2>
-        <h3 class="hero-slide__sub-heading">Lorem ipsum dolor sit amat</h3>
-        <div class="hero-slide__cta">
-          <a href="#0" class="button button--primary">View Roasts</a>
-        </div>
-        {% comment %} /__cta {% endcomment %}
-      </div>
-      {% comment %} /__overlay {% endcomment %}
-    </div>
-    {% comment %} /.hero-slide {% endcomment %}
+  {% endfor %}
   </div>
+  {% comment %} /__inner {% endcomment %}
   <div class="hero-slider__dots" id="heroSliderDots">
 
   </div>
@@ -49,7 +31,41 @@
 {% schema %}
   {
     "name": "Hero Slider",
+    "max_blocks": 4,
     "settings": [],
+    "blocks": [
+      {
+        "type": "Slide",
+        "name": "Slide",
+        "settings": [
+          {
+            "id": "slide_image",
+            "type": "image_picker",
+            "label": "Slide Image"
+          },
+          {
+            "id": "slide_heading",
+            "type": "text",
+            "label": "Slide Heading"
+          },
+          {
+            "id": "slide_sub_heading",
+            "type": "text",
+            "label": "Slide Sub-Heading"
+          },
+          {
+            "id": "slide_button_link",
+            "type": "url",
+            "label": "Slide Button Link"
+          },
+          {
+            "id": "slide_button_text",
+            "type": "text",
+            "label": "Slide Button Text"
+          }
+        ]
+      }
+    ],
     "presets": [
       {
         "name": "Hero Slider",

@@ -13,6 +13,8 @@
 // Guttered Flex Grid
 //-----------------------------------------
 .flexgrid--guttered {
+  margin-left: -#{$gutter};
+  margin-right: -#{$gutter};
   .flexgrid__item {
     padding-left: $gutter;
     padding-right: $gutter;
@@ -24,7 +26,7 @@
 //-----------------------------------------
 .flexgrid--one-half {
   .flexgrid__item {
-    width: calc(50% - #{$gutter});
+    flex-basis: calc(50% - #{$gutter});
   }
 }
 
@@ -33,7 +35,7 @@
 //-----------------------------------------
 .flexgrid--one-third {
   .flexgrid__item {
-    width: calc(33% - #{$gutter});
+    flex-basis: calc(33% - #{$gutter});
   }
 }
 
@@ -42,6 +44,6 @@
 //-----------------------------------------
 .flexgrid--one-fourth {
   .flexgrid__item {
-    width: calc(25% - #{$gutter});
+    flex-basis: calc(25% - #{$gutter});
   }
 }

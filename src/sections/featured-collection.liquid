@@ -1,79 +1,58 @@
-{% if section.settings.title != blank %}
-  <h2>{{ section.settings.title | escape }}</h2>
-{% endif %}
-
-{%- assign collection = collections[section.settings.collection] -%}
-
-{% for product in collection.products limit: 6 %}
-  <a href="{{ product.url | within: collection }}">
-
-    {% if product.featured_image != blank %}
-      {{ product.featured_image.src | img_url: '480x480' | img_tag: product.title }}
-    {% endif %}
-
-    <p>{{ product.title }}</p>
-  </a>
-
-  <p>
-    {% if product.compare_at_price > product.price %}
-
-      {% if product.price_varies %}
-        {%- assign sale_price = product.price | money -%}
-        {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
-      {% else %}
-        {{ 'products.product.on_sale' | t }}
-        {{ product.price | money }}
-      {% endif %}
-
-    {% else %}
-
-      {% if product.price_varies %}
-        {%- assign price = product.price | money -%}
-        {{ 'products.product.from_text_html' | t: price: price }}
-      {% else %}
-        {{ product.price | money }}
-      {% endif %}
-
-    {% endif %}
-  </p>
-{% else %}
-
-  {% for i in (1..6) %}
-    <a href="#">
-      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-      {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
-
-      <p>
-        {{ 'homepage.onboarding.product_title' | t }}
-      </p>
-    </a>
-
-    <p>{{ 1999 | money }}</p>
-  {% endfor %}
-{% endfor %}
+<section class="featured-collection index-section">
+  <div class="container">
+    <h2 class="featured-collection__heading section-heading">A Featured Collection</h2>
+    <div class="flexgrid flexgrid--one-third flexgrid--guttered">
+      <article class="product-card flexgrid__item">
+        <div class="product-card__image">
+          <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: section.settings.placeholder.aspect_ratio | times: 100 }}%">
+            <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: section.settings.placeholder | img_url %}" src="{{ section.settings.placeholder | img_url }}" alt="">
+          </div>
+          {% comment %} /.image-wrapper {% endcomment %}
+        </div>
+        {% comment %} /__image {% endcomment %}
+        
+      </article>
+      <article class="product-card flexgrid__item">
+        <div class="product-card__image">
+          <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: section.settings.placeholder.aspect_ratio | times: 100 }}%">
+            <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: section.settings.placeholder | img_url %}" src="{{ section.settings.placeholder | img_url }}" alt="">
+          </div>
+          {% comment %} /.image-wrapper {% endcomment %}
+        </div>
+        {% comment %} /__image {% endcomment %}
+        
+      </article>
+      <article class="product-card flexgrid__item">
+        <div class="product-card__image">
+          <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: section.settings.placeholder.aspect_ratio | times: 100 }}%">
+            <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: section.settings.placeholder | img_url %}" src="{{ section.settings.placeholder | img_url }}" alt="">
+          </div>
+          {% comment %} /.image-wrapper {% endcomment %}
+        </div>
+        {% comment %} /__image {% endcomment %}
+        
+      </article>
+    </div>
+    {% comment %} /.flexgrid {% endcomment %}
+  </div>
+  {% comment %} /.container {% endcomment %}
+</section>
 
 {% schema %}
   {
-    "name": "Featured collection",
+    "name": "Featured Collection",
     "settings": [
       {
-        "type": "text",
-        "id": "title",
-        "label": "Heading",
-        "default": "Featured collection"
-      },
-      {
-        "id": "collection",
-        "type": "collection",
-        "label": "Collection"
+        "id": "placeholder",
+        "type": "image_picker",
+        "label": "Placeholder"
       }
     ],
     "presets": [
       {
-        "name": "Featured collection",
-        "category": "Collection"
+        "name": "Featured Collection",
+        "category": "Product Blocks"
       }
     ]
   }
-
 {% endschema %}

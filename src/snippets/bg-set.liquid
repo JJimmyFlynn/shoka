@@ -10,5 +10,7 @@
   {% if image.width > 1030 %}{{ image | img_url: '1027x' }} 1030w {{ 1030 | divided_by: image.aspect_ratio | round }}h,{% endif %}
   {% if image.width > 1130 %}{{ image | img_url: '1129x' }} 1130w {{ 1130 | divided_by: image.aspect_ratio | round }}h,{% endif %}
   {% if image.width > 1200 %}{{ image | img_url: '1200x' }} 1200w {{ 1200 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 1600 %}{{ image | img_url: '1600x' }} 1600w {{ 1600 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 2000 %}{{ image | img_url: '2000x' }} 2000w {{ 2000 | divided_by: image.aspect_ratio | round }}h,{% endif %}
   {{ image | img_url: 'master' }}  {{ image.width }}w {{ image.height }}h
 {% endif %}

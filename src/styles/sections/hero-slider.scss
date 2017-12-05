@@ -4,14 +4,14 @@
 .hero-slider {
   position: relative;
   .hero-slider__inner {
-    height: 25rem;
+    height: 40rem;
     opacity: 1;
     transition: opacity 0.2s ease;
     @include breakpoint($small--up) {
-      height: 30rem;
+      height: 48rem;
     }
     @include breakpoint($medium--up) {
-      height: 43.75rem;
+      height: 70rem;
     }
     &.slider-loading { // Hide slider until it has initialized
       opacity: 0;
@@ -51,20 +51,20 @@
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   }
   .hero-slide__heading {
-    margin: 0 0 3rem 0;
-    font-size: 2rem;
+    margin: 0 0 4.8rem 0;
+    font-size: 3.2rem;
     @include breakpoint($small--up) {
-      font-size: 3.5rem;
+      font-size: 5.6rem;
     }
     @include breakpoint($medium--up) {
-      font-size: 5rem;
-      margin-bottom: 3.5rem;
+      font-size: 8rem;
+      margin-bottom: 5.6rem;
     }
   }
   .hero-slide__sub-heading {
-    margin: 0 0 2rem 0;
+    margin: 0 0 3.2rem 0;
     @include breakpoint($medium--up) {
-      margin-bottom: 4.375rem;
+      margin-bottom: 7rem;
     }
   }
   //-----------------------------------------
@@ -76,7 +76,7 @@
     width: 100%;
     .slick-dots {
       margin: 0;
-      padding: 0 4rem 2rem;
+      padding: 0 6.4rem 3.2rem;
       text-align: center;
       @include breakpoint($medium--up) {
         text-align: right;
@@ -93,8 +93,8 @@
       }
       button { // Slick dots
         @include prefix(appearance, none, webkit moz spec);
-        height: 0.5rem;
-        width: 3.125rem;;
+        height: 0.8rem;
+        width: 5rem;;
         background-color: rgba(white, 0.6);
         font-size: 0;
         border: none;

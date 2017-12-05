@@ -1,12 +1,20 @@
-<section class="image-with-text flexgrid flexgrid--one-half flexgrid--guttered">
-  <div class="image-with-text__block image-block flexgrid__item">
-
+<section class="image-with-text">
+  <div class="image-with-text__block image-block">
+    <div class="image-block__image-wrap lazyload"
+    data-bgset="{% include 'bg-set', image: section.settings.feature_row_image %}"
+    data-sizes="auto">
+    </div>
+    {% comment %} /__image-wrap {% endcomment %}
   </div>
   {% comment %}/.image-block{% endcomment %}
-  <div class="image-with-text__block text-block flexgrid__item">
+  <div class="image-with-text__block text-block">
     <div class="text-block__inner">
-      <h2 class="text-block__heading">I'm the heading</h2>
-      <p class="text-block__copy">Lorem ipsum dolor sit amat. Equibilus no serat fui. Eros ambiularum sed ami erat.</p>
+      {% if section.settings.feature_row_heading %}
+        <h2 class="text-block__heading">{{ section.settings.feature_row_heading }}</h2>
+      {% endif %}
+      {% if section.settings.feature_row_copy %}
+        <p class="text-block__copy rte">{{ section.settings.feature_row_copy }}</p>
+      {% endif %}
     </div>
     {% comment %} /__inner {% endcomment %}
   </div>
@@ -16,7 +24,23 @@
 {% schema %}
   {
     "name": "Image with Text",
-    "settings": [],
+    "settings": [
+      {
+        "label": "Row Image",
+        "id": "feature_row_image",
+        "type": "image_picker"
+      },
+      {
+        "label": "Row Heading",
+        "id": "feature_row_heading",
+        "type": "text"
+      },
+      {
+        "label": "Row Copy",
+        "id": "feature_row_copy",
+        "type": "textarea"
+      }
+    ],
     "presets": [
       {
         "name": "Image with Text Block",

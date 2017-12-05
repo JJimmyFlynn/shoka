@@ -1,0 +1,14 @@
+{% comment %} Generates responsive background image bgset for lazySizes JS {% endcomment %}
+
+{% if image != blank %}
+  {% if image.width > 200 %}{{ image | img_url: '200x' }} 200w {{ 200 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 390 %}{{ image | img_url: '390x' }} 390w {{ 390 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 540 %}{{ image | img_url: '540x' }} 540w {{ 540 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 680 %}{{ image | img_url: '680x' }} 680w {{ 680 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 800 %}{{ image | img_url: '800x' }} 800w {{ 800 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 900 %}{{ image | img_url: '900x' }} 900w {{ 900 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 1030 %}{{ image | img_url: '1027x' }} 1030w {{ 1030 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 1130 %}{{ image | img_url: '1129x' }} 1130w {{ 1130 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {% if image.width > 1200 %}{{ image | img_url: '1200x' }} 1200w {{ 1200 | divided_by: image.aspect_ratio | round }}h,{% endif %}
+  {{ image | img_url: 'master' }}  {{ image.width }}w {{ image.height }}h
+{% endif %}

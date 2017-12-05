@@ -8,7 +8,7 @@
 .site-header {
   display: flex;
   align-items: center;
-  height: 4.375rem;
+  height: 7rem;
   background-color: white;
   border-bottom: 1px solid $color-border;
   box-shadow: 0 1px rgba($color-border, 0.3);
@@ -23,11 +23,11 @@
 // Menu Toggle
 //-----------------------------------------
 .site-header__menu-toggle {
-  padding: 0 1.875rem;
+  padding: 0 3rem;
   border-right: 1px solid $color-border;
   .icon-menu-toggle {
-    width: 25px;
-    height: 25px;
+    width: 2.5rem;
+    height: 2.5rem;
     color: $color-grey;
     cursor: pointer;
     &:hover {
@@ -44,7 +44,7 @@
   justify-content: space-between;
   align-items: center;
   flex-grow: 1;
-  padding: 0 1.875rem;
+  padding: 0 3rem;
   border-right: 1px solid $color-border;
 }
 
@@ -52,7 +52,7 @@
 // Site Logo
 //-----------------------------------------
 .site-logo {
-  padding: 0.5rem 0;
+  padding: 0.8rem 0;
   font-family: $font-stack-header;
   text-decoration: none;
   color: $color-primary;
@@ -74,7 +74,7 @@
   }
 }
 .header-social__item {
-  margin-right: 0.75rem;
+  margin-right: 1.2rem;
   color: $color-grey;
   text-decoration: none;
   transition: color 0.15s ease-in-out;
@@ -85,8 +85,8 @@
     color: $color-primary;
   }
   .icon {
-    width: 20px;
-    height: 20px;
+    width: 2rem;
+    height: 2rem;
   }
 }
 
@@ -95,7 +95,7 @@
 //-----------------------------------------
 .site-header__search {
   display: none;
-  width: 75px;
+  width: 7.5rem;
   justify-content: center;
   @include breakpoint($medium--up) {
     display: flex;
@@ -107,8 +107,8 @@
       color: $color-primary;
     }
     .icon {
-      width: 25px;
-      height: 25px;
+      width: 2.5rem;
+      height: 2.5rem;
       transition: color 0.15s ease-in-out;
     }
   }
@@ -118,7 +118,7 @@
 // Header Cart Toggle
 //-----------------------------------------
 .site-header__cart {
-  width: 75px;
+  width: 7.5rem;
   justify-content: center;
   border-left: 1px solid $color-border;
   .cart-toggle {
@@ -128,8 +128,8 @@
       color: $color-primary;
     }
     .icon {
-      width: 40px;
-      height: 40px;
+      width: 4rem;
+      height: 4rem;
       transition: color 0.15s ease-in-out;
     }
   }

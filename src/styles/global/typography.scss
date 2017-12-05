@@ -1,7 +1,12 @@
 //--------------------------------------------------------------
 // General Typography Styles
 //--------------------------------------------------------------
+html {
+  font-size: 10px;
+}
+
 body {
+  font-size: 1.6rem;
   font-family: $font-stack-body;
   line-height: $font-line-height;
   color: $color-grey;
@@ -28,4 +33,7 @@ h6, .h6 {
   // No margins on paragraphs outside rich
   // text content for easier styling 
   margin: 0;
+}
+p:last-child {
+  margin-bottom: 0;
 }

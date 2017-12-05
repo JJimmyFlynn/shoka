@@ -2,18 +2,75 @@
 // Feature Row with Image Section Styles
 //--------------------------------------------------------------
 .image-with-text {
-
+  @include breakpoint($medium--up) {
+    display: flex;
+  }
+  .text-block,
+  .image-block {
+    @include breakpoint($medium--up) {
+      width: 50%;
+    }
+  }
   //-----------------------------------------
   // Text Block
   //-----------------------------------------
   .text-block {
+    padding: 22rem 4rem;
     background-color: $color-secondary;
+    text-align: center;
+    @include breakpoint($medium--up) {
+      text-align: left;
+    }
   }
   .text-block__inner {
-    width: 50%;
+    position: relative;
     margin: 0 auto;
+    @include breakpoint($medium--up) {
+      width: 75%;
+      margin: 0 auto;
+    }
   }
   .text-block__heading {
-    font-size: 2rem;
+    position: relative;
+    font-size: 2.4rem;
+    @include breakpoint($medium--up) {
+      font-size: 2.8rem
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      top: -1.5rem;
+      height: 0.5rem;
+      width: 6rem;
+      background-color: $color-primary;
+    }
+  }
+  .text-block__copy {
+    font-size: 1.4rem;
+    @include breakpoint($medium--up) {
+      font-size: 1.6rem;
+    }
+  }
+  //-----------------------------------------
+  // Image Block
+  //-----------------------------------------
+  .image-block {
+    padding: 4rem 2rem;
+  }
+  .image-block__image-wrap {
+    width: 20rem;
+    height: 20rem;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    @include breakpoint($medium--up) {
+      width: 30rem;
+      height: 30rem;
+    }
   }
 }

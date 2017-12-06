@@ -4,9 +4,13 @@
 .product-card {
   display: flex;
   flex-direction: column;
+  margin-bottom: 2rem;
   overflow: hidden;
   background-color: #fff;
   border-radius: 3px;
+  @include breakpoint($medium--up) {
+    margin-bottom: 0;
+  }
   .product-card__image {
     margin-bottom: 1rem;
   }
@@ -29,10 +33,46 @@
     color: $color-grey;
   }
   .product-card__info {
+    position: relative;
     padding: 0 2rem 0 2rem;
   }
   .product-card__cta {
     margin-top: auto;
     padding: 0 2rem 2rem 2rem;
+  }
+}
+
+//-----------------------------------------
+// Product Card States
+//-----------------------------------------
+.product-card.is-on-sale {
+  .product-card__info {
+    padding-right: 6rem;
+  }
+}
+.product-card.is-top-seller {
+  .product-card__info {
+    padding-right: 8rem;
+  }
+}
+
+
+//-----------------------------------------
+// Product Card Notice
+//-----------------------------------------
+.product-card__notice {
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  padding: 0.5rem 0.8rem;
+  font-size: 1.2rem;
+  border-radius: 3px;
+  &.is-sale {
+    background-color: $color-primary;
+    color: white;
+  }
+  &.is-top-seller {
+    background-color: $color-secondary;
+    color: $color-grey;
   }
 }

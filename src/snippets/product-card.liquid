@@ -1,0 +1,24 @@
+<article class="product-card is-on-sale flexgrid__item one-whole one-third--medium-up">
+  <div class="product-card__image">
+    <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: section.settings.placeholder.aspect_ratio | times: 100 }}%">
+      <a href="#0">
+        <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: section.settings.placeholder | img_url %}" src="{{ section.settings.placeholder | img_url }}" alt="">
+      </a>
+    </div>
+    {% comment %} /.image-wrapper {% endcomment %}
+  </div>
+  {% comment %} /__image {% endcomment %}
+  <div class="product-card__info">
+    <header>
+      <h3 class="product-card__title"><a href="#0">Bai Hao White Tea Extra lng title to see about button position</a></h3>
+    </header>
+    <p class="product-card__vendor"><a href="#0">Han Family</a></p>
+    <p class="product-card__price">$12.95 <span class="product-card__compare-price"><s>$15.95</s></span></p>
+    <span class="product-card__notice is-sale">On Sale</span>
+  </div>
+  {% comment %} /__info {% endcomment %}
+  <div class="product-card__cta">
+    <a href="#0" class="button button--primary button--small">Buy Now</a>
+  </div>
+  {% comment %} /__cta {% endcomment %}
+</article>

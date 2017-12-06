@@ -1,0 +1,38 @@
+//--------------------------------------------------------------
+// Product Card Styles
+//--------------------------------------------------------------
+.product-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 3px;
+  .product-card__image {
+    margin-bottom: 1rem;
+  }
+  .product-card__title {
+    margin: 0 0 0 0;
+    font-family: $font-stack-body;
+  }
+  .product-card__vendor {
+    line-height: 1.3;
+    font-size: 1.5rem;
+  }
+  .product-card__price {
+    margin: 1rem 0 1.5rem 0;
+    font-weight: 700;
+  }
+  .product-card__compare-price {
+    display: inline-block;
+    margin-left: 0.7rem;
+    font-weight: 400;
+    color: $color-grey;
+  }
+  .product-card__info {
+    padding: 0 2rem 0 2rem;
+  }
+  .product-card__cta {
+    margin-top: auto;
+    padding: 0 2rem 2rem 2rem;
+  }
+}

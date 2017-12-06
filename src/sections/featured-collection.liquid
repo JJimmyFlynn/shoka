@@ -2,9 +2,10 @@
   <div class="container">
     <h2 class="featured-collection__heading section-heading">A Featured Collection</h2>
     <div class="flexgrid flexgrid--guttered">
-      {% include 'product-card' %}
-      {% include 'product-card' %}
-      {% include 'product-card' %}
+    {% assign collection = collections[section.settings.collection] %}
+    {% for product in collection.products limit: 3 %}
+      {% include 'product-card', product: product %}
+    {% endfor %}
     </div>
     {% comment %} /.flexgrid {% endcomment %}
   </div>
@@ -16,9 +17,9 @@
     "name": "Featured Collection",
     "settings": [
       {
-        "id": "placeholder",
-        "type": "image_picker",
-        "label": "Placeholder"
+        "id": "collection",
+        "type": "collection",
+        "label": "Featured Collection"
       }
     ],
     "presets": [

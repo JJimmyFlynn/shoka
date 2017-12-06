@@ -24,26 +24,66 @@
 //-----------------------------------------
 // One Half Grid
 //-----------------------------------------
-.flexgrid--one-half {
-  .flexgrid__item {
-    flex-basis: calc(50% - #{$gutter});
+.one-half {
+  width: calc(50% - #{$gutter});
+}
+.one-half--large-up {
+  @include breakpoint($large--up) {
+    width: calc(50% - #{$gutter});
+  }
+}
+.one-half--medium-up {
+  @include breakpoint($medium--up) {
+    width: calc(50% - #{$gutter});
+  }
+}
+.one-half--small-up {
+  @include breakpoint($small--up) {
+    width: calc(50% - #{$gutter});
   }
 }
 
 //-----------------------------------------
 // One Third Grid
 //-----------------------------------------
-.flexgrid--one-third {
-  .flexgrid__item {
-    flex-basis: calc(33% - #{$gutter});
+.one-third {
+  width: calc(33% - #{$gutter});
+}
+.one-third--large-up {
+  @include breakpoint($large--up) {
+    width: calc(33% - #{$gutter});
   }
 }
+.one-third--medium-up {
+  @include breakpoint($medium--up) {
+    width: calc(33% - #{$gutter});
+  }
+}
+.one-third--small-up {
+  @include breakpoint($small--up) {
+    width: calc(33% - #{$gutter});
+  }
+}
+
 
 //-----------------------------------------
 // One Fourth Grid
 //-----------------------------------------
-.flexgrid--one-fourth {
-  .flexgrid__item {
-    flex-basis: calc(25% - #{$gutter});
+.one-fourth {
+  width: calc(25% - #{$gutter});
+}
+.one-fourth--large-up {
+  @include breakpoint($large--up) {
+    width: calc(25% - #{$gutter});
+  }
+}
+.one-fourth--medium-up {
+  @include breakpoint($medium--up) {
+    width: calc(25% - #{$gutter});
+  }
+}
+.one-fourth--small-up {
+  @include breakpoint($small--up) {
+    width: calc(25% - #{$gutter});
   }
 }

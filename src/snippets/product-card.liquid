@@ -2,6 +2,7 @@
 {% assign is_top_seller = false %}
 {% assign notice_text = "On Sale" %}
 
+{% comment %} Set variables for displaying 'On Sale' or 'Top Seller' norices {% endcomment %}
 {% for collection in product.collections %}
   {% if collection.title == 'Top Sellers' %}
     {% assign is_top_seller = true %}
@@ -13,16 +14,21 @@
   {% assign is_on_sale = true %}
   {% assign notice_text = "On Sale" %}
 {% endif %}
-
+{% comment %} If a product is both on sale and a top seller prefer 'On Sale' {% endcomment %}
 {% if is_on_sale and is_top_seller %}
   {% assign is_top_seller = false %}
 {% endif %}
 
-<article class="product-card flexgrid__item one-whole one-third--medium-up{% if is_on_sale %} is-on-sale{% endif %}{% if is_top_seller %} is-top-seller{% endif %}">
+<article class="product-card flexgrid__item one-whole one-third--medium-up{% if is_on_sale %} is-on-sale{% endif %}{% if is_top_seller %} is-top-seller{% endif %}" itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="brand" content="{{ shop.name }}">
+  {% if product.sku %}
+    <meta itemprop="sku" content="{{ product.sku }}">
+  {% endif %}
   <div class="product-card__image">
     <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100 }}%">
-      <a href="{{ product.url | within: collection }}">
-        <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: product.featured_image | img_url %}" src="{{ product.featured_image | img_url }}" alt="">
+      <a href="{{ product.url | within: collection }}" itemprop="url" content="{{ product.url | within: collection }}">
+        <meta itemprop="image" content="{{ product.featured_image | img_url }}">
+        <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: product.featured_image | img_url %}" src="{{ product.featured_image | img_url }}" alt="{{ product.featured_image.alt }}">
       </a>
     </div>
     {% comment %} /.image-wrapper {% endcomment %}
@@ -30,10 +36,18 @@
   {% comment %} /__image {% endcomment %}
   <div class="product-card__info">
     <header>
-      <h3 class="product-card__title"><a href="{{ product.url | within: collection }}">{{ product.title }}</a></h3>
+      <h3 class="product-card__title"><a href="{{ product.url | within: collection }}"><span itemprop="name">{{ product.title }}</span></a></h3>
     </header>
     <p class="product-card__vendor">{{ product.vendor | link_to_vendor }}</p>
-    <p class="product-card__price">{{ product.price_max | money }}{% if product.price < product.compare_at_price_max %}<span class="product-card__compare-price"><s>{{ product.compare_at_price }}</s></span>{% endif %}</p>
+    <p class="product-card__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+      {% if product.available %}
+        <link itemprop="availability" href="http://schema.org/InStock">
+        {% else %}
+          <link itemprop="availability" href="http://schema.org/OutOfStock">
+      {% endif %}
+      <span itemprop="price" content="{{ product.price_max | money }}">{{ product.price_max | money }}</span>{% if product.price < product.compare_at_price_max %}<span class="product-card__compare-price"><s>{{ product.compare_at_price }}</s></span>{% endif %}
+    </p>
     {% if is_on_sale or is_top_seller %}
       <span class="product-card__notice{% if is_on_sale %} is-sale{% endif %}{% if is_top_seller %} is-top-seller{% endif %}">{{ notice_text }}</span>
     {% endif %}

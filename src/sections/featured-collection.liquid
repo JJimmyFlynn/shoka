@@ -1,8 +1,11 @@
 <section class="featured-collection index-section">
   <div class="container">
-    <h2 class="featured-collection__heading section-heading">A Featured Collection</h2>
-    <div class="flexgrid flexgrid--guttered">
-    {% assign collection = collections[section.settings.collection] %}
+    {% if section.settings.fc_heading %}
+      <h2 class="featured-collection__heading section-heading">{{ section.settings.fc_heading }}</h2>
+    {% endif %}
+    <div class="flexgrid flexgrid--guttered" itemscope itemtype="http://schema.org/ItemList">
+    <meta itemprop="numberOfItems" content="3">
+    {% assign collection = collections[section.settings.fc_collection] %}
     {% for product in collection.products limit: 3 %}
       {% include 'product-card', product: product %}
     {% endfor %}
@@ -17,7 +20,13 @@
     "name": "Featured Collection",
     "settings": [
       {
-        "id": "collection",
+        "id": "fc_heading",
+        "type": "text",
+        "label": "Section Heading",
+        "info": "Optional"
+      },
+      {
+        "id": "fc_collection",
         "type": "collection",
         "label": "Featured Collection"
       }

@@ -1,0 +1,31 @@
+<section class="collection-callout index-section">
+  <h2 class="section-heading">Section Heading</h2>
+  <div class="container">
+    <div class="collection-card">
+      <div class="image-wrapper">
+        <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image:  %}" src="{{  }}" alt="{{  }}">
+      </div>
+      {% comment %} /.image-wrapper {% endcomment %}
+      <div class="collection-card__overlay">
+        <h3 class="collection-card__heading">Oolong Teas</h3>
+        <p class="collection-card__sub-heading">Browse our premium</p>
+      </div>
+      {% comment %} /__overlay {% endcomment %}
+    </div>
+    {% comment %} /.collection-card {% endcomment %}
+  </div>
+  {% comment %} /.container {% endcomment %}
+</section>
+
+{% schema %}
+  {
+    "name": "Featured Collection",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Collections Callout",
+        "category": "Product Blocks"
+      }
+    ]
+  }
+{% endschema %}

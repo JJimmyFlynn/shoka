@@ -14,6 +14,7 @@
   {% assign is_on_sale = true %}
   {% assign notice_text = "On Sale" %}
 {% endif %}
+
 {% comment %} If a product is both on sale and a top seller prefer 'On Sale' {% endcomment %}
 {% if is_on_sale and is_top_seller %}
   {% assign is_top_seller = false %}

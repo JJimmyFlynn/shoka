@@ -1,26 +1,99 @@
+{% assign collection_1 = collections[section.settings.cc_collection_1] %}
+{% assign collection_2 = collections[section.settings.cc_collection_2] %}
+
 <section class="collection-callout index-section">
-  <h2 class="section-heading">Section Heading</h2>
   <div class="container">
-    <div class="collection-card">
-      <div class="image-wrapper">
-        <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image:  %}" src="{{  }}" alt="{{  }}">
+    {% if section.settings.cc_section_heading %}
+      <h2 class="section-heading">Section Heading</h2>
+    {% endif %}
+    <div class="flexgrid flexgrid--guttered">
+      <div class="collection-card flexgrid__item one-half--medium-up">
+        <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: collection_1.image.aspect_ratio | times: 100 }}%;">
+          <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: collection_1.image %}" src="{{ collection_1.image | img_url }}" alt="{{ collection.image.alt }}">
+        </div>
+        {% comment %} /.image-wrapper {% endcomment %}
+        <div class="collection-card__overlay">
+          <h3 class="collection-card__heading">{{ section.settings.cc_heading_1 }}</h3>
+          {% if section.settings.cc_sub_heading_1 %}
+            <p class="collection-card__sub-heading">{{ section.settings.cc_sub_heading_1 }}</p>
+          {% endif %}
+        </div>
+        {% comment %} /__overlay {% endcomment %}
       </div>
-      {% comment %} /.image-wrapper {% endcomment %}
-      <div class="collection-card__overlay">
-        <h3 class="collection-card__heading">Oolong Teas</h3>
-        <p class="collection-card__sub-heading">Browse our premium</p>
+      {% comment %} /.collection-card {% endcomment %}
+      <div class="collection-card flexgrid__item one-half--medium-up">
+        <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: collection_2.image.aspect_ratio | times: 100 }}%;">
+          <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: collection_2.image %}" src="{{ collection_1.image | img_url }}" alt="{{ collection.image.alt }}">
+        </div>
+        {% comment %} /.image-wrapper {% endcomment %}
+        <div class="collection-card__overlay">
+          <h3 class="collection-card__heading">{{ section.settings.cc_heading_2 }}</h3>
+          {% if section.settings.cc_sub_heading_2 %}
+            <p class="collection-card__sub-heading">{{ section.settings.cc_sub_heading_2 }}</p>
+          {% endif %}
+        </div>
+        {% comment %} /__overlay {% endcomment %}
       </div>
-      {% comment %} /__overlay {% endcomment %}
+      {% comment %} /.collection-card {% endcomment %}
     </div>
-    {% comment %} /.collection-card {% endcomment %}
+    {% comment %} /.flexgrid {% endcomment %}
   </div>
   {% comment %} /.container {% endcomment %}
 </section>
 
 {% schema %}
   {
-    "name": "Featured Collection",
-    "settings": [],
+    "name": "Collection Callouts",
+    "settings": [
+      {
+        "id": "cc_section_heading",
+        "type": "text",
+        "label": "Section Heading",
+        "info": "Optional"
+      },
+      {
+        "type": "header",
+        "content": "Collection 1"
+      },
+      {
+        "id": "cc_collection_1",
+        "type": "collection",
+        "label": "Collection 1",
+        "info": "Image for collection taken from collection image set on this collection's settings page."
+      },
+      {
+        "id": "cc_heading_1",
+        "type": "text",
+        "label": "Collection 1 Heading"
+      },
+      {
+        "id": "cc_sub_heading_1",
+        "type": "text",
+        "label": "Collection 1 Sub-heading",
+        "info": "Optional"
+      },
+      {
+        "type": "header",
+        "content": "Collection 2"
+      },
+      {
+        "id": "cc_collection_2",
+        "type": "collection",
+        "label": "Collection 2",
+        "info": "Image for collection taken from collection image set on this collection's settings page."
+      },
+      {
+        "id": "cc_heading_2",
+        "type": "text",
+        "label": "Collection 2 Heading"
+      },
+      {
+        "id": "cc_sub_heading_2",
+        "type": "text",
+        "label": "Collection 2 Sub-heading",
+        "info": "Optional"
+      }
+    ],
     "presets": [
       {
         "name": "Collections Callout",

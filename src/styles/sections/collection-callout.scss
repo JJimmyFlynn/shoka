@@ -1,0 +1,29 @@
+//--------------------------------------------------------------
+// Collection Callout Section Styles
+//--------------------------------------------------------------
+.collection-callout {
+  padding: $gutter 0;
+  .section-heading {
+    text-align: center;
+  }
+  .collection-card {
+    position: relative;
+    .collection-card__overlay {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background-color: rgba(black, 0.6);
+      color: white;
+    }
+    .collection-card__heading {
+      margin: 0;
+      font-size: 2.4rem;
+    }
+  }
+}

@@ -3,36 +3,44 @@
 
 <section class="collection-callout index-section">
   <div class="container">
-    {% if section.settings.cc_section_heading %}
+    {% unless section.settings.cc_section_heading == blank %}
       <h2 class="section-heading">Section Heading</h2>
-    {% endif %}
+    {% endunless %}
     <div class="flexgrid flexgrid--guttered">
-      <div class="collection-card flexgrid__item one-half--medium-up">
-        <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: collection_1.image.aspect_ratio | times: 100 }}%;">
-          <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: collection_1.image %}" src="{{ collection_1.image | img_url }}" alt="{{ collection.image.alt }}">
-        </div>
-        {% comment %} /.image-wrapper {% endcomment %}
-        <div class="collection-card__overlay">
-          <h3 class="collection-card__heading">{{ section.settings.cc_heading_1 }}</h3>
-          {% if section.settings.cc_sub_heading_1 %}
-            <p class="collection-card__sub-heading">{{ section.settings.cc_sub_heading_1 }}</p>
-          {% endif %}
-        </div>
-        {% comment %} /__overlay {% endcomment %}
+      <div class="collection-card flexgrid__item one-whole one-half--medium-up">
+        <a href="{{ collection_1.url }}">
+          <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: collection_1.image.aspect_ratio | times: 100 }}%;">
+            <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: collection_1.image %}" src="{{ collection_1.image | img_url }}" alt="{{ collection.image.alt }}">
+          </div>
+          {% comment %} /.image-wrapper {% endcomment %}
+          <div class="collection-card__overlay">
+            <div class="collection-card__overlay-content">
+              <h3 class="collection-card__heading has-sub-heading">{{ section.settings.cc_heading_1 }}</h3>
+              {% unless section.settings.cc_sub_heading_1 == blank %}
+                <p class="collection-card__sub-heading">{{ section.settings.cc_sub_heading_1 }}</p>
+              {% endunless %}
+            </div>
+          </div>
+          {% comment %} /__overlay {% endcomment %}
+        </a>
       </div>
       {% comment %} /.collection-card {% endcomment %}
-      <div class="collection-card flexgrid__item one-half--medium-up">
-        <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: collection_2.image.aspect_ratio | times: 100 }}%;">
-          <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: collection_2.image %}" src="{{ collection_1.image | img_url }}" alt="{{ collection.image.alt }}">
-        </div>
-        {% comment %} /.image-wrapper {% endcomment %}
-        <div class="collection-card__overlay">
-          <h3 class="collection-card__heading">{{ section.settings.cc_heading_2 }}</h3>
-          {% if section.settings.cc_sub_heading_2 %}
-            <p class="collection-card__sub-heading">{{ section.settings.cc_sub_heading_2 }}</p>
-          {% endif %}
-        </div>
-        {% comment %} /__overlay {% endcomment %}
+      <div class="collection-card flexgrid__item one-whole one-half--medium-up">
+        <a href="{{ collection_2.url }}">
+          <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: collection_2.image.aspect_ratio | times: 100 }}%;">
+            <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: collection_2.image %}" src="{{ collection_1.image | img_url }}" alt="{{ collection.image.alt }}">
+          </div>
+          {% comment %} /.image-wrapper {% endcomment %}
+          <div class="collection-card__overlay">
+            <div class="collection-card__overlay-content">
+              <h3 class="collection-card__heading">{{ section.settings.cc_heading_2 }}</h3>
+              {% unless section.settings.cc_sub_heading_2 == blank %}
+                <p class="collection-card__sub-heading">{{ section.settings.cc_sub_heading_2 }}</p>
+              {% endunless %}
+            </div>
+          </div>
+          {% comment %} /__overlay {% endcomment %}
+        </a>
       </div>
       {% comment %} /.collection-card {% endcomment %}
     </div>

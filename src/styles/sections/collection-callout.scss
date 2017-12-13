@@ -5,25 +5,59 @@
   padding: $gutter 0;
   .section-heading {
     text-align: center;
+  } 
+}
+
+//-----------------------------------------
+// Collection Card
+//-----------------------------------------
+.collection-card {
+  position: relative;
+  margin-bottom: $gutter;
+  border-radius: 3px;
+  overflow: hidden;
+  @include breakpoint($medium--up) {
+    margin-bottom: 0;
   }
-  .collection-card {
+  .collection-card__overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(black, 0.4);
+    color: white;
+  }
+  .collection-card__heading {
     position: relative;
-    .collection-card__overlay {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      background-color: rgba(black, 0.6);
-      color: white;
+    margin: 0;
+    font-size: 2rem;
+    text-align: center;
+    @include breakpoint($medium--up) {
+      font-size: 3rem; 
     }
-    .collection-card__heading {
-      margin: 0;
-      font-size: 2.4rem;
+    // Modified styles when the block has a sub-heading
+    &.has-sub-heading {
+      padding: 0 0 0.5rem 0;
+      text-align: center;
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        height: 3px;
+        width: 50px;
+        background-color: white;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
+  }
+  .collection-card__sub-heading {
+    position: relative;
+    padding-top: 1rem;
   }
 }

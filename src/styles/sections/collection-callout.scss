@@ -2,7 +2,7 @@
 // Collection Callout Section Styles
 //--------------------------------------------------------------
 .collection-callout {
-  padding: $gutter 0;
+  padding: 3rem 0;
   .section-heading {
     text-align: center;
   } 
@@ -14,10 +14,15 @@
 .collection-card {
   position: relative;
   margin-bottom: $gutter;
-  border-radius: 3px;
+  border-radius: $border-radius;
   overflow: hidden;
   @include breakpoint($medium--up) {
     margin-bottom: 0;
+  }
+  &:hover {
+    .collection-card__overlay {
+      background-color: rgba(black, 0.7);
+    }
   }
   .collection-card__overlay {
     display: flex;
@@ -31,6 +36,7 @@
     left: 0;
     background-color: rgba(black, 0.4);
     color: white;
+    transition: all 0.2s ease-in-out;
   }
   .collection-card__heading {
     position: relative;
@@ -53,6 +59,7 @@
         background-color: white;
         left: 50%;
         transform: translateX(-50%);
+        transition: background-color 0.2s ease-in-out;
       }
     }
   }

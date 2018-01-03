@@ -54,8 +54,8 @@
     {% endif %}
   </div>
   {% comment %} /__info {% endcomment %}
-  <div class="product-card__cta">
-    <a href="{{ product.url | within: collection }}" class="button button--primary button--small">Buy Now</a>
-  </div>
+  {% comment %} <div class="product-card__cta">
+    <a href="{{ product.url | within: collection }}" class="button button--primary button--small">View</a>
+  </div> {% endcomment %}
   {% comment %} /__cta {% endcomment %}
 </article>

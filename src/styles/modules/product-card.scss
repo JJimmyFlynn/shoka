@@ -7,9 +7,14 @@
   margin-bottom: 2rem;
   overflow: hidden;
   background-color: #fff;
-  border-radius: 3px;
+  border-radius: $border-radius;
   @include breakpoint($medium--up) {
     margin-bottom: 0;
+  }
+  &:hover {
+    .product-card__title a {
+      color: $color-primary;
+    }
   }
   .product-card__image {
     margin-bottom: 1rem;
@@ -25,6 +30,7 @@
   .product-card__price {
     margin: 1rem 0 1.5rem 0;
     font-weight: 700;
+    font-size: 1.8rem;
   }
   .product-card__compare-price {
     display: inline-block;
@@ -66,7 +72,7 @@
   right: 1rem;
   padding: 0.5rem 0.8rem;
   font-size: 1.2rem;
-  border-radius: 3px;
+  border-radius: $border-radius;
   &.is-sale {
     background-color: $color-primary;
     color: white;

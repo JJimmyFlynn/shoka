@@ -4,7 +4,7 @@
 <section class="collection-callout index-section">
   <div class="container">
     {% unless section.settings.cc_section_heading == blank %}
-      <h2 class="section-heading">Section Heading</h2>
+      <h2 class="section-heading">{{ section.settings.cc_section_heading }}</h2>
     {% endunless %}
     <div class="flexgrid flexgrid--guttered">
       <div class="collection-card flexgrid__item one-whole one-half--medium-up">

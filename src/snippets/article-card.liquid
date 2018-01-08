@@ -1,0 +1,24 @@
+<article class="article-card flexgrid__item one-whole one-third--medium-up">
+	<div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%">
+		<a href="{{ article.url }}">
+			<img class="article-card__image is-lazyloaded lazyload" data-srcset="{% include 'srcset', image: article.image | img_url %}" src="{{ article.image | img_url }}" alt="{{ article.image.alt }}">
+		</a>
+	</div>
+	{% comment %} /.image-wrapper {% endcomment %}
+	<div class="article-card__content">
+		<header>
+			<p class="article-card__publish-date">{{ article.published_at | time_tag: '%B %e, %Y' }}</p>
+			<h2 class="article-card__title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+		</header>
+		<div class="article-card__excerpt rte">
+			{% if article.excerpt.size > 0 %}
+				{{ article.excerpt }}
+			{% else %}
+				{{ article.content | strip_html | truncatewords: 30 }}
+			{% endif %}
+		</div>
+		{% comment %} /__excerpt {% endcomment %}
+		<a href="{{ article.url }}" class="article-card__cta">Read More {% include 'icon-arrow-right' %}</a>
+	</div>
+	{% comment %} /__content {% endcomment %}
+</article>

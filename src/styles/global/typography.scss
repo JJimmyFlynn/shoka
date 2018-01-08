@@ -40,7 +40,7 @@ h6, .h6 {
 //-----------------------------------------
 // Paragraphs
 //-----------------------------------------
-:not(.rte) p {
+p {
   // No margins on paragraphs outside rich
   // text content for easier styling 
   margin: 0;

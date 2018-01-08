@@ -2,9 +2,39 @@
 // Article Card Styles
 //--------------------------------------------------------------
 .article-card {
+  margin-bottom: $gutter;
   background-color: white;
   border-radius: $border-radius;
+  overflow: hidden;
+  @include breakpoint($medium--up) {
+    margin-bottom: 0;
+  }
 }
 .article-card__content {
   padding: 2rem;
+}
+.article-card__publish-date {
+  color: lighten($color-grey, 40%);
+  font-size: 1.4rem;
+}
+.article-card__title {
+  margin-bottom: 0.5rem;
+}
+.article-card__excerpt {
+  margin-bottom : 1.5rem;
+}
+.article-card__cta {
+  color: $color-primary;
+  font-size: 1.4rem;
+  .icon {
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+    transition: transform 0.2s ease-in-out;
+  }
+  &:hover {
+    .icon {
+      transform: translateX(0.5rem);
+    }
+  }
 }

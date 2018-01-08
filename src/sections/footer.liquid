@@ -1,4 +1,28 @@
-<footer>
+<footer class="site-footer">
+  <div class="container flexgrid">
+    <div class="flexgrid__item two-thirds--medium-up flexgrid">
+      <div class="flex-grid__item one-third--medium-up">
+        <h3 class="site-footer__heading">Get in Touch</h3>
+      </div>
+      <div class="flex-grid__item one-third--medium-up">
+        <h3 class="site-footer__heading">Follow Us</h3>
+      </div>
+      <div class="flex-grid__item one-third--medium-up">
+        <h3 class="site-footer__heading">Customer Help</h3>
+      </div>
+    </div>
+    {% comment %} /__footer-column {% endcomment %}
+    <div class="flexgrid__item one-third--medium-up">
+      <h3 class="site-footer__heading">Signup for News</h3>
+    </div>
+    {% comment %} /__footer-column {% endcomment %}
+  </div>
+  {% comment %} /.container {% endcomment %}
+</footer>
+
+
+
+{% comment %} <footer>
 
   {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
   <ul>
@@ -50,7 +74,7 @@
   <div>
     <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
   </div>
-</footer>
+</footer> {% endcomment %}
 
 {% schema %}
   {

@@ -26,6 +26,37 @@ textarea {
 }
 
 //-----------------------------------------
+// Styled Inputs
+//-----------------------------------------
+.styled-input {
+  border: none;
+  border-bottom: 2px solid $color-grey;
+  transition: border-color 0.15s ease-out;
+  &:focus {
+    border-bottom-color: $color-primary;
+    outline: none;
+  }
+}
+
+//-----------------------------------------
+// Inline Form
+//-----------------------------------------
+.inline-form {
+  position: relative;
+}
+.inline-form__input {
+  width: 100%;
+  height: 4.2rem;
+  padding-right: 8.5rem;
+}
+.inline-form__submit {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1.2rem;
+}
+
+//-----------------------------------------
 // Custom Select
 //-----------------------------------------
 select {
@@ -58,12 +89,6 @@ select::-ms-expand {
 //-----------------------------------------
 // Error Styles
 //-----------------------------------------
-input,
-select,
-textarea {
-  &.input-error {
-    border-color: $color-error;
-    background-color: $color-error-bg;
-    color: $color-error;
-  }
+.errors {
+  color: $color-error;
 }

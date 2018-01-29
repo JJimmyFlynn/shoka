@@ -1,9 +1,13 @@
 <section class="latest-articles index-section">
-  <div class="container flexgrid">
-  {% for article in blogs[section.settings.la_blog].articles %}
-    {% include 'article-card' %}
-  {% endfor %}
+  <div class="container">
+    <div class="flexgrid flexgrid--guttered">
+      {% for article in blogs[section.settings.la_blog].articles %}
+        {% include 'article-card' %}
+      {% endfor %}
+    </div>
+    {% comment %} /.flexgrid {% endcomment %}
   </div>
+  {% comment %} /.container {% endcomment %}
 </section>
 
 {% schema %}

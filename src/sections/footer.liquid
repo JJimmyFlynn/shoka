@@ -1,21 +1,69 @@
 <footer class="site-footer">
   <div class="container flexgrid">
-    <div class="flexgrid__item two-thirds--medium-up flexgrid">
-      <div class="flex-grid__item one-third--medium-up">
+    <div class="flexgrid__item two-thirds--medium-up one-whole flexgrid footer-column">
+      <div class="flex-grid__item one-third--medium-up one-whole footer-column">
         <h3 class="site-footer__heading">Get in Touch</h3>
+        <div class="site-footer__contact">
+          123 Fake Street
+          Springfield, MA 01234
+          contact@myshop.com
+        </div>
+        {% comment %} /.site-footer__contact {% endcomment %}
       </div>
-      <div class="flex-grid__item one-third--medium-up">
+      {% comment %} /.flexgrid__item {% endcomment %}
+      <div class="flexgrid__item one-third--medium-up one-whole footer-column">
         <h3 class="site-footer__heading">Follow Us</h3>
+        <div class="site-footer__social footer-social">
+          <a href="#0" class="footer-social__item">
+            <span class="visually-hidden">{{ shop.name }} on Facebook</span>
+            {% include 'icon-facebook' %}
+          </a>
+          <a href="#0" class="footer-social__item">
+            <span class="visually-hidden">{{ shop.name }} on Instagram</span>
+            {% include 'icon-instagram' %}
+          </a>
+          <a href="#0" class="footer-social__item">
+            <span class="visually-hidden">{{ shop.name }} on Twitter</span>
+            {% include 'icon-twitter' %}
+          </a>
+          <a href="#0" class="footer-social__item">
+            <span class="visually-hidden">{{ shop.name }} on Pinterest</span>
+            {% include 'icon-pinterest' %}
+          </a>
+        </div>
+        {% comment %} /.site-footer__social {% endcomment %}
       </div>
-      <div class="flex-grid__item one-third--medium-up">
+      {% comment %} /.flexgrid__item {% endcomment %}
+      <div class="flexgrid__item one-third--medium-up one-whole footer-column">
         <h3 class="site-footer__heading">Customer Help</h3>
+        <nav class="site-footer__nav footer-nav">
+          <a href="#0" class="footer-nav__item">Item 1</a>
+          <a href="#0" class="footer-nav__item">Item 2</a>
+          <a href="#0" class="footer-nav__item">Item 3</a>
+          <a href="#0" class="footer-nav__item">Item 4</a>
+        </nav>
       </div>
+      {% comment %} /.flexgrid__item {% endcomment %}
     </div>
-    {% comment %} /__footer-column {% endcomment %}
-    <div class="flexgrid__item one-third--medium-up">
+    {% comment %} /site-footer__footer-column {% endcomment %}
+    <div class="flexgrid__item one-third--medium-up one-whole footer-column site-footer__newsletter">
       <h3 class="site-footer__heading">Signup for News</h3>
+      {% form 'customer' %}
+        {% if form.posted_successfully? %}
+          <p class="form-success">Thank you for subscribing!</p>
+          {% else %}
+          <div class="inline-form">
+            <input type="email" name="contact[email]" placeholder="Email address" class="inline-form__input styled-input">
+            <input type="submit" value="Submit" class="inline-form__submit button button--grey button--small">
+          </div>
+          {% comment %} /.inline-form {% endcomment %}
+        {% endif %}
+        {% if form.errors %}
+          {{ form.errors | default_errors }}
+        {% endif %}
+      {% endform %}
     </div>
-    {% comment %} /__footer-column {% endcomment %}
+    {% comment %} /site-footer__footer-column {% endcomment %}
   </div>
   {% comment %} /.container {% endcomment %}
 </footer>

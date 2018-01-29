@@ -32,8 +32,26 @@
 }
 
 //-----------------------------------------
+// Button Grey
+//-----------------------------------------
+.button--grey {
+  background-color: $color-grey;
+  &:hover {
+    background-color: $color-primary;
+  }
+}
+
+//-----------------------------------------
 // Smaller Button
 //-----------------------------------------
 .button--small {
   padding: 1em 1.5em;
+}
+
+//-----------------------------------------
+// Shopify Challenge Page Button
+//-----------------------------------------
+.shopify-challenge__button {
+  @extend .button;
+  @extend .button--primary;
 }

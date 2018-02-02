@@ -14,7 +14,7 @@
     {% if template.name == 'index' %}
       <h1 class="no-margin" itemscope itemtype="http://schema.org/Organization">
     {% else %}
-      <div class="h1" itemscope itemtype="http://schema.org/Organization">
+      <div itemscope itemtype="http://schema.org/Organization">
     {% endif %}
         <a href="/" itemprop="url" class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
           {% if section.settings.logo != blank %}

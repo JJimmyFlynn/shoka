@@ -1,6 +1,6 @@
 {% comment %} Generates responsive image srcset for lazySizes JS {% endcomment %}
 
-{% if image != blank %}
+{%- if image != blank -%}
   {% if image.width > 200 %}{{ image | img_url: '200x' }} 200w,{% endif %}
   {% if image.width > 390 %}{{ image | img_url: '390x' }} 390w,{% endif %}
   {% if image.width > 540 %}{{ image | img_url: '540x' }} 540w,{% endif %}
@@ -13,4 +13,4 @@
   {% if image.width > 1600 %}{{ image | img_url: '1600x' }} 1600w,{% endif %}
   {% if image.width > 2000 %}{{ image | img_url: '2000x' }} 2000w,{% endif %}
   {{ image | img_url: 'master' }}  {{ image.width }}w
-{% endif %}
+{%- endif %}

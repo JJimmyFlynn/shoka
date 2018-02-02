@@ -1,9 +1,9 @@
 //-----------------------------------------
 // Color Variables
 //-----------------------------------------
-$color-primary  : #C33A2F;
-$color-secondary: #EFEBEB;
-$color-grey     : #585858;
+$color-primary  : {{ settings.color_primary }};
+$color-secondary: {{ settings.color_secondary }};
+$color-grey     : {{ settings.color_grey }};
 
 // Text colors
 $color-body-text: {{ settings.color_body_text }};
@@ -15,15 +15,13 @@ $color-body: #fff;
 $color-border: #B7B7B7;
 
 // Border Radius
-$border-radius: 3px;
+$border-radius: 0.3rem;
 
 // Helper colors for form error states
-$color-disabled       : #000;
-$color-disabled-border: #000;
+$color-disabled       : #B7B7B7;
+$color-disabled-border: #B7B7B7;
 $color-error          : #E5463E;
-$color-error-bg       : #000;
-$color-success        : #000;
-$color-success-bg     : #000;
+$color-success        : #0CB24B;
 
 //-----------------------------------------
 // Typography Variables

@@ -1,46 +1,52 @@
 <footer class="site-footer">
   <div class="container flexgrid">
     <div class="flexgrid__item two-thirds--medium-up one-whole flexgrid footer-column">
-      <div class="flex-grid__item one-third--medium-up one-whole footer-column">
+      <div class="flex-grid__item one-third--small-up one-whole footer-column">
         <h3 class="site-footer__heading">Get in Touch</h3>
         <div class="site-footer__contact">
-          123 Fake Street
-          Springfield, MA 01234
-          contact@myshop.com
+          {{ section.settings.footer_contact_info }}
         </div>
         {% comment %} /.site-footer__contact {% endcomment %}
       </div>
       {% comment %} /.flexgrid__item {% endcomment %}
-      <div class="flexgrid__item one-third--medium-up one-whole footer-column">
+      <div class="flexgrid__item one-third--small-up one-whole footer-column">
         <h3 class="site-footer__heading">Follow Us</h3>
         <div class="site-footer__social footer-social">
-          <a href="#0" class="footer-social__item">
-            <span class="visually-hidden">{{ shop.name }} on Facebook</span>
-            {% include 'icon-facebook' %}
-          </a>
-          <a href="#0" class="footer-social__item">
-            <span class="visually-hidden">{{ shop.name }} on Instagram</span>
-            {% include 'icon-instagram' %}
-          </a>
-          <a href="#0" class="footer-social__item">
-            <span class="visually-hidden">{{ shop.name }} on Twitter</span>
-            {% include 'icon-twitter' %}
-          </a>
-          <a href="#0" class="footer-social__item">
-            <span class="visually-hidden">{{ shop.name }} on Pinterest</span>
-            {% include 'icon-pinterest' %}
-          </a>
+          {% if settings.facebook_profile_url != blank %}
+            <a href="{{ settings.facebook_profile_url }}" class="footer-social__item">
+              <span class="visually-hidden">{{ shop.name }} on Facebook</span>
+              {% include 'icon-facebook' %}
+            </a>
+          {% endif %}
+          {% if settings.instagram_profile_url != blank %}
+            <a href="{{ settings.instagram_profile_url }}" class="footer-social__item">
+              <span class="visually-hidden">{{ shop.name }} on Instagram</span>
+              {% include 'icon-instagram' %}
+            </a>
+          {% endif %}
+          {% if settings.twitter_profile_url != blank %}
+            <a href="{{ settings.twitter_profile_url }}" class="footer-social__item">
+              <span class="visually-hidden">{{ shop.name }} on Twitter</span>
+              {% include 'icon-twitter' %}
+            </a>
+          {% endif %}
+          {% if settings.pinterest_profile_url != blank %}
+            <a href="{{ settings.pinterest_profile_url }}" class="footer-social__item">
+              <span class="visually-hidden">{{ shop.name }} on Pinterest</span>
+              {% include 'icon-pinterest' %}
+            </a>
+          {% endif %}
         </div>
         {% comment %} /.site-footer__social {% endcomment %}
       </div>
       {% comment %} /.flexgrid__item {% endcomment %}
-      <div class="flexgrid__item one-third--medium-up one-whole footer-column">
+      <div class="flexgrid__item one-third--small-up one-whole footer-column">
         <h3 class="site-footer__heading">Customer Help</h3>
         <nav class="site-footer__nav footer-nav">
-          <a href="#0" class="footer-nav__item">Item 1</a>
-          <a href="#0" class="footer-nav__item">Item 2</a>
-          <a href="#0" class="footer-nav__item">Item 3</a>
-          <a href="#0" class="footer-nav__item">Item 4</a>
+        {% assign footer_linklist = section.settings.footer_linklist %}
+        {% for link in linklists[footer_linklist].links %}
+          <a href="{{ link.url }}" class="footer-nav__item">{{ link.title }}</a>
+        {% endfor %}
         </nav>
       </div>
       {% comment %} /.flexgrid__item {% endcomment %}
@@ -53,7 +59,7 @@
           <p class="form-success">Thank you for subscribing!</p>
           {% else %}
           <div class="inline-form">
-            <input type="email" name="contact[email]" placeholder="Email address" class="inline-form__input styled-input">
+            <input type="email" name="contact[email]" placeholder="Email address" class="inline-form__input styled-input" required="required">
             <input type="submit" value="Submit" class="inline-form__submit button button--grey button--small">
           </div>
           {% comment %} /.inline-form {% endcomment %}
@@ -68,77 +74,21 @@
   {% comment %} /.container {% endcomment %}
 </footer>
 
-
-
-{% comment %} <footer>
-
-  {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
-  <ul>
-    {% for social in social_accounts %}
-      {%- assign social_handle = social | handleize -%}
-      {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
-      {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
-
-      {% if settings[social_link] != blank %}
-        <li>
-          <a href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
-            {% include social_icon %}
-            <span class="icon-fallback-text">{{ social }}</span>
-          </a>
-        </li>
-      {% endif %}
-
-    {% endfor %}
-  </ul>
-
-  {% if section.settings.show_payment_icons %}
-    {% unless shop.enabled_payment_types == empty %}
-      {%- assign payment_icons_available = 'amazon_payments,american_express,apple_pay,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,visa' | split: ',' -%}
-
-      <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
-      <ul class="payment-icons">
-        {% for type in shop.enabled_payment_types %}
-          {% if payment_icons_available contains type %}
-            <li>
-              {%- assign icon_name = type | prepend: 'icon-' -%}
-              {% include icon_name %}
-              <span class="visually-hidden">{{ type | capitalize | replace: '_', ' ' }}</span>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    {% endunless %}
-  {% endif %}
-
-  {%- assign footer_linklist = section.settings.footer_linklist -%}
-  {% if linklists[footer_linklist].links.size > 0 %}
-    <ul>
-      {% for link in linklists[footer_linklist].links %}
-        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-
-  <div>
-    <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
-  </div>
-</footer> {% endcomment %}
-
 {% schema %}
   {
     "name": "Footer",
     "settings": [
       {
-        "type": "link_list",
-        "id": "footer_linklist",
-        "label": "First menu",
-        "default": "footer"
+        "type": "richtext",
+        "id": "footer_contact_info",
+        "label": "Contact Info/Address"
       },
       {
-        "type": "checkbox",
-        "id": "show_payment_icons",
-        "label": "Show payment icons",
-        "default": false
+        "type": "link_list",
+        "id": "footer_linklist",
+        "label": "Footer Menu",
+        "info": "Create a menu in your shop's [navigation settings](https://www.shopify.com/admin/menus)",
+        "default": "footer"
       }
     ]
   }

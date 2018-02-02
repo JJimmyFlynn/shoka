@@ -29,38 +29,20 @@
 					{% comment %} /.image-wrapper {% endcomment %}
 				</figure>
 				{% comment %} /.product-thumbnails__item {% endcomment %}
-				<div class="product-photos__thumbnails product-thumbnails flexgrid flexgrid--guttered">
-				{% comment %} Thumbnail Images {% endcomment %}
-					<figure class="product-thumbnails__item flexgrid__item one-fourth">
-						<div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100 }}%">
-							<img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: product.featured_image | img_url %}" src="{{ product.featured_image | img_url }}" alt="{{ product.featured_image.alt }}" data-product-single-thumbnail>
-						</div>
-						{% comment %} /.image-wrapper {% endcomment %}
-					</figure>
-					{% comment %} /.product-thumbnails__item {% endcomment %}
-					<figure class="product-thumbnails__item flexgrid__item one-fourth">
-						<div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100 }}%">
-							<img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: product.featured_image | img_url %}" src="{{ product.featured_image | img_url }}" alt="{{ product.featured_image.alt }}" data-product-single-thumbnail>
-						</div>
-						{% comment %} /.image-wrapper {% endcomment %}
-					</figure>
-					{% comment %} /.product-thumbnails__item {% endcomment %}
-					<figure class="product-thumbnails__item flexgrid__item one-fourth">
-						<div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100 }}%">
-							<img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: product.featured_image | img_url %}" src="{{ product.featured_image | img_url }}" alt="{{ product.featured_image.alt }}" data-product-single-thumbnail>
-						</div>
-						{% comment %} /.image-wrapper {% endcomment %}
-					</figure>
-					{% comment %} /.product-thumbnails__item {% endcomment %}
-					<figure class="product-thumbnails__item flexgrid__item one-fourth">
-						<div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100 }}%">
-							<img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: product.featured_image | img_url %}" src="{{ product.featured_image | img_url }}" alt="{{ product.featured_image.alt }}" data-product-single-thumbnail>
-						</div>
-						{% comment %} /.image-wrapper {% endcomment %}
-					</figure>
-					{% comment %} /.product-thumbnails__item {% endcomment %}
-				</div>
-				{% comment %} /.product-thumbnails {% endcomment %}
+				{% if product.images.size > 1 %}
+					{% comment %} Thumbnail Images {% endcomment %}
+					<div class="product-photos__thumbnails product-thumbnails flexgrid flexgrid--guttered">
+						{% for image in product.images %}
+							<figure class="product-thumbnails__item flexgrid__item one-fourth">
+								<div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%">
+									<img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: image | img_url %}" src="{{ image | img_url }}" alt="{{ image.alt }}" data-product-single-thumbnail>
+								</div>
+								{% comment %} /.image-wrapper {% endcomment %}
+							</figure>
+						{% endfor %}
+					</div>
+					{% comment %} /.product-thumbnails {% endcomment %}
+				{% endif %}
 			</div>
 			{% comment %} /.product-photos {% endcomment %}
 

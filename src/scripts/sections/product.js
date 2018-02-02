@@ -51,9 +51,12 @@ shoka.Product = (function() {
     this.namespace = '.product';
     this.variants = new slate.Variants(options);
     this.$featuredImage = $(selectors.productFeaturedImage, this.$container);
+    this.$productThumbnails = $(selectors.productThumbs, this.$container);
 
     this.$container.on('variantChange' + this.namespace, this.updateAddToCartState.bind(this));
     this.$container.on('variantPriceChange' + this.namespace, this.updateProductPrices.bind(this));
+    this.$productThumbnails.on('click', this.updateThumbnailImage.bind(this));
+
 
     if (this.$featuredImage.length > 0) {
       this.settings.imageSize = slate.Image.imageSize(this.$featuredImage.attr('src'));
@@ -125,6 +128,12 @@ shoka.Product = (function() {
       var sizedImgUrl = slate.Image.getSizedImageUrl(variant.featured_image.src, this.settings.imageSize);
 
       this.$featuredImage.attr('src', sizedImgUrl);
+    },
+
+    updateThumbnailImage: function(evt) {
+      var newImgUrl = $(evt.target).attr('src');
+      var sizedImgUrl = slate.Image.getSizedImageUrl(newImgUrl, this.settings.imageSize);
+      console.log(sizedImgUrl);
     },
 
     /**

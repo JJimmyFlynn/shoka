@@ -1,0 +1,87 @@
+//--------------------------------------------------------------
+// Product Page Styles
+//--------------------------------------------------------------
+.product {
+	padding-top: $gutter;
+}
+
+//-----------------------------------------
+// Product Details
+//-----------------------------------------
+.product-details__title {
+	margin-bottom: 0;
+	font-size: 3.2rem;
+	line-height: 1.2;
+}
+//-----------------------------------------
+// Product Meta
+//-----------------------------------------
+.product-details__type,
+.product-details__vendor,
+.product-details__meta-separator {
+	display: inline-block;
+	font-size: 2rem;
+}
+//-----------------------------------------
+// Product Price
+//-----------------------------------------
+.product-details__price-wrapper {
+	margin-bottom: 1rem;
+	font-size: 2.4rem;
+}
+.product-details__price {
+	margin-right: 0.5rem;
+	font-weight: 700;
+}
+.product-details__compare-price {
+	color: $color-disabled;
+}
+//-----------------------------------------
+// Form Elements
+//-----------------------------------------
+.product-details__form {
+	margin-bottom: 1.5rem;
+}
+.product-details__form-label {
+	display: block;
+}
+.product-details__option-select { 
+	margin-bottom: 1rem;
+	select {
+		padding: 1.4rem 1rem;
+		width: 100%;
+		border-width: 2px;
+		&:hover,
+		&:focus {
+			border-color: $color-primary;
+			outline: none;
+		}
+	}
+}
+.product-details__quantity {
+	width: 49%;
+	padding: 1.4rem 1rem;
+	border-width: 2px;
+	&:hover,
+	&:focus {
+		border-color: $color-primary;
+		outline: none;
+	}
+}
+.product-details__add-to-cart {
+	width: 49%;
+	vertical-align: initial;
+}
+
+//-----------------------------------------
+// Related Products
+//-----------------------------------------
+.related-products {
+	margin-top: 3rem;
+	padding: 3rem;
+	background-color: $color-secondary;
+	.section-heading {
+		font-size: 3.2rem;
+		text-align: center;
+	}
+}

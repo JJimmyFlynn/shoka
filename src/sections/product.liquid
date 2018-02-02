@@ -70,6 +70,9 @@
 				{% if product.type %}
 					<p class="product-details__type">{{ product.type | link_to_type }}</p>
 				{% endif %}
+				{% if product.type and product.vendor %}
+					<span class="product-details__meta-separator"> | </span>
+				{% endif %}
 				{% if product.vendor %}
 					<p class="product-details__vendor">{{ product.vendor | link_to_vendor }}</p>
 				{% endif %}
@@ -79,14 +82,14 @@
 					<meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
 					<link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
 
-					<div data-price-wrapper>
-						<span data-product-price>
+					<div class="product-details__price-wrapper" data-price-wrapper>
+						<span class="product-details__price" data-product-price>
 							{{ current_variant.price | money }}
 						</span>
 
 						{% if product.compare_at_price_max > product.price %}
-							<span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-							<s data-compare-price>
+							<span class="visually-hidden" data-compare-text>Regular Price</span>
+							<s class="product-details__compare-price" data-compare-price>
 								{% if current_variant.compare_at_price > current_variant.price %}
 									{{ current_variant.compare_at_price | money }}
 								{% endif %}
@@ -94,12 +97,12 @@
 						{% endif %}
 					</div>
 
-					<form action="/cart/add" method="post" enctype="multipart/form-data">
+					<form class="product-details__form" action="/cart/add" method="post" enctype="multipart/form-data">
 
 						{% unless product.has_only_default_variant %}
 							{% for option in product.options_with_values %}
 								<div class="selector-wrapper product-details__option-select js">
-									<label class="product-details__option-label" for="SingleOptionSelector-{{ forloop.index0 }}">
+									<label class="product-details__form-label" for="SingleOptionSelector-{{ forloop.index0 }}">
 										{{ option.name }}
 									</label>
 
@@ -130,13 +133,14 @@
 							{% endfor %}
 						</select>
 
-						<label for="Quantity">Quantity</label>
-						<input type="number" id="Quantity" name="quantity" value="1" min="1">
+						<label class="product-details__form-label" for="Quantity">Quantity</label>
+						<input class="product-details__quantity" type="number" id="Quantity" name="quantity" value="1" min="1">
 
 						<button
 							type="submit"
 							name="add"
 							data-add-to-cart
+							class=" product-details__add-to-cart button button--primary"
 							{% unless current_variant.available %}disabled="disabled"{% endunless %}>
 								<span data-add-to-cart-text>
 									{% if current_variant.available %}
@@ -161,6 +165,8 @@
 		{% comment %} /.flexgrid {% endcomment %}
 	</div>
 	{% comment %} /.container {% endcomment %}
+
+	{% include 'related-products' %}
 
 	{% unless product == empty %}
     <script type="application/json" data-product-json>

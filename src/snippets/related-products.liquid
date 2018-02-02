@@ -1,0 +1,15 @@
+{% assign collection = product.collection %}
+<section class="related-products">
+	<div class="container">
+    <h2 class="featured-collection__heading section-heading">More Green Tea</h2>
+    <div class="flexgrid flexgrid--guttered" itemscope itemtype="http://schema.org/ItemList">
+			<meta itemprop="numberOfItems" content="3">
+			{% assign collection = collections['green-tea'] %}
+			{% for product in collection.products limit: 3 %}
+				{% include 'product-card', product: product %}
+			{% endfor %}
+    </div>
+    {% comment %} /.flexgrid {% endcomment %}
+  </div>
+  {% comment %} /.container {% endcomment %}
+</section>

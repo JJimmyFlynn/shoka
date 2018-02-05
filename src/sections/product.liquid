@@ -1,8 +1,18 @@
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+{%- assign current_variant_sale = false -%}
+{%- if current_variant.compare_at_price > current_variant.price -%}
+	{%- assign current_variant_sale = true -%}
+{%- endif -%}
+
 
 <section class="product" itemscope itemtype="http://schema.org/Product" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
-	{% comment %} Schema Product Info {% endcomment %}
+	
+	{% comment %}
+	------------------------------------------------------------------------------
+	Schema.org Product Info
+	------------------------------------------------------------------------------
+	{% endcomment %}
 	<meta itemprop="name" content="{{ product.title }}{% unless product.has_only_default_variant %} - {{ current_variant.title }}{% endunless %}">
   <meta itemprop="url" content="{{ shop.url }}{{ current_variant.url }}">
   <meta itemprop="brand" content="{{ product.vendor }}">
@@ -10,32 +20,53 @@
   <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
 
 	<div class="container">
+		
+		{% comment %}
+		------------------------------------------------------------------------------
+		Product Breacrumbs
+		------------------------------------------------------------------------------
+		{% endcomment %}
 		<div class="breadcrumbs">
-			<a href="#0" class="breadcrumbs__link">Home</a>
+			<a href="{{ shop.url }}" class="breadcrumbs__link">Home</a>
+			{% if collection.url and collection.title != 'Products' %}
+				<span class="breadcrumbs__arrow">{% include 'icon-arrow-right' %}</span>
+				<a href="{{ collection.url }}" class="breadcrumbs__link">{{ collection.title }}</a>
+			{% endif %}
 			<span class="breadcrumbs__arrow">{% include 'icon-arrow-right' %}</span>
-			<a href="#0" class="breadcrumbs__link">Collection</a>
-			<span class="breadcrumbs__arrow">{% include 'icon-arrow-right' %}</span>
-			<a href="#0" class="breadcrumbs__link">Product</a>
+			<a href="{{ product.url }}" class="breadcrumbs__link">{{ product.title }}</a>
 		</div>
 		{% comment %} /.breadcrumbs {% endcomment %}
 
 		<div class="flexgrid flexgrid--guttered">
 			<div class="flexgrid__item product-photos one-whole one-half--medium-up">
-				{% comment %} Featured Image {% endcomment %}
-				<figure class="product-photos__featured-image">
-					<div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100 }}%">
-						<img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: featured_image | img_url %}" src="{{ featured_image | img_url }}" alt="{{ featured_image.alt }}" data-product-featured-image>
-					</div>
-					{% comment %} /.image-wrapper {% endcomment %}
-				</figure>
-				{% comment %} /.product-thumbnails__item {% endcomment %}
+				
+				{% comment %}
+				------------------------------------------------------------------------------
+				Product Image Slider
+				------------------------------------------------------------------------------
+				{% endcomment %}
+				<div class="product-image-slider" data-product-image-slider>
+					{% for image in product.images %}
+						<figure class="product-photos__image">
+							<div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%">
+								<img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: image | img_url %}" src="{{ image | img_url }}" alt="{{ image.alt }}">
+							</div>
+							{% comment %} /.image-wrapper {% endcomment %}
+						</figure>
+					{% endfor %}
+				</div>
+
+				{% comment %}
+				------------------------------------------------------------------------------
+				Product Thumbnails
+				------------------------------------------------------------------------------
+				{% endcomment %}
 				{% if product.images.size > 1 %}
-					{% comment %} Thumbnail Images {% endcomment %}
 					<div class="product-photos__thumbnails product-thumbnails flexgrid flexgrid--guttered">
 						{% for image in product.images %}
-							<figure class="product-thumbnails__item flexgrid__item one-fourth">
+							<figure class="product-thumbnails__item flexgrid__item one-fourth" data-image-index="{{ forloop.index0 }}" data-product-single-thumbnail>
 								<div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%">
-									<img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: image | img_url %}" src="{{ image | img_url }}" alt="{{ image.alt }}" data-product-single-thumbnail>
+									<img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: image | img_url %}" src="{{ image | img_url }}" alt="{{ image.alt }}">
 								</div>
 								{% comment %} /.image-wrapper {% endcomment %}
 							</figure>
@@ -46,8 +77,13 @@
 			</div>
 			{% comment %} /.product-photos {% endcomment %}
 
+			{% comment %}
+			------------------------------------------------------------------------------
+			Product Name, Price, and Options
+			------------------------------------------------------------------------------
+			{% endcomment %}
 			<div class="flexgrid__item product-details one-whole one-half--medium-up">
-				<h1 class="product-details__title">{{ product.title }}</h1>
+				<h1 class="product-details__title" itemprop="name">{{ product.title }}</h1>
 
 				{% if product.type %}
 					<p class="product-details__type">{{ product.type | link_to_type }}</p>
@@ -64,8 +100,13 @@
 					<meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
 					<link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
 
+						<div class="product-details__notices{% unless current_variant_sale %} hide{% endunless %}" data-product-sale-notice>
+							<span class="on-sale">On Sale</span>
+						</div>
+						{% comment %} /.product-details__notices {% endcomment %}
+
 					<div class="product-details__price-wrapper" data-price-wrapper>
-						<span class="product-details__price" data-product-price>
+						<span class="product-details__price" data-product-price itemprop="price">
 							{{ current_variant.price | money }}
 						</span>
 
@@ -78,7 +119,12 @@
 							</s>
 						{% endif %}
 					</div>
-
+					
+					{% comment %}
+					------------------------------------------------------------------------------
+					Product Form
+					------------------------------------------------------------------------------
+					{% endcomment %}
 					<form class="product-details__form" action="/cart/add" method="post" enctype="multipart/form-data">
 
 						{% unless product.has_only_default_variant %}
@@ -115,29 +161,41 @@
 							{% endfor %}
 						</select>
 
-						<label class="product-details__form-label" for="Quantity">Quantity</label>
-						<input class="product-details__quantity" type="number" id="Quantity" name="quantity" value="1" min="1">
-
-						<button
-							type="submit"
-							name="add"
-							data-add-to-cart
-							class=" product-details__add-to-cart button button--primary"
-							{% unless current_variant.available %}disabled="disabled"{% endunless %}>
-								<span data-add-to-cart-text>
-									{% if current_variant.available %}
-										Add to Cart
-									{% else %}
-										Sold Out
-									{% endif %}
-								</span>
-						</button>
-
+						<div class="flexgrid flexgrid--guttered">
+							<div class="product-details__quantity-wrapper flexgrid__item one-half">
+								<label class="product-details__form-label" for="Quantity">Quantity</label>
+								<input class="product-details__quantity" type="number" id="Quantity" name="quantity" value="1" min="1">
+							</div>
+							{% comment %} /.product-details__quantity-wrapper {% endcomment %}
+							<div class="product-details__add-wrapper flexgrid__item one-half">
+								<button
+									type="submit"
+									name="add"
+									data-add-to-cart
+									class="product-details__add-to-cart button button--primary"
+									{% unless current_variant.available %}disabled="disabled"{% endunless %}>
+										<span data-add-to-cart-text>
+											{% if current_variant.available %}
+												Add to Cart
+											{% else %}
+												Sold Out
+											{% endif %}
+										</span>
+								</button>
+							</div>
+							{% comment %} /.product-details__add-wrapper {% endcomment %}
+						</div>
+						{% comment %} /.flexgrid {% endcomment %}
 					</form>
 				</div>
 				{% comment %} /offers {% endcomment %}
 
-				<div class="product-details__description rte">
+				{% comment %}
+				------------------------------------------------------------------------------
+				Prouct Description
+				------------------------------------------------------------------------------
+				{% endcomment %}
+				<div class="product-details__description rte" itemprop="description">
 					{{ product.description }}
 				</div>
 
@@ -148,8 +206,18 @@
 	</div>
 	{% comment %} /.container {% endcomment %}
 
+	{% comment %}
+	------------------------------------------------------------------------------
+	Related Products
+	------------------------------------------------------------------------------
+	{% endcomment %}
 	{% include 'related-products' %}
 
+	{% comment %}
+	------------------------------------------------------------------------------
+	Product Data
+	------------------------------------------------------------------------------
+	{% endcomment %}
 	{% unless product == empty %}
     <script type="application/json" data-product-json>
       {{ product | json }}

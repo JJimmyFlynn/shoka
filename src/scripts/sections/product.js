@@ -1,7 +1,7 @@
 /**
  * Product Template Script
  * ------------------------------------------------------------------------------
- * A file that contains scripts highly couple code to the Product template.
+ * A file that contains highly coupled code to the Product template.
  *
    * @namespace product
  */
@@ -19,7 +19,9 @@ shoka.Product = (function() {
     productJson: '[data-product-json]',
     productPrice: '[data-product-price]',
     productThumbs: '[data-product-single-thumbnail]',
-    singleOptionSelector: '[data-single-option-selector]'
+    singleOptionSelector: '[data-single-option-selector]',
+    productImageSlider: '[data-product-image-slider]',
+    productSaleNotice: '[data-product-sale-notice]'
   };
 
   /**
@@ -47,6 +49,9 @@ shoka.Product = (function() {
       product: this.productSingleObject
     };
 
+    /**
+     * Setup some default selectors and event bindings for product page interactions
+     */
     this.settings = {};
     this.namespace = '.product';
     this.variants = new slate.Variants(options);
@@ -55,8 +60,6 @@ shoka.Product = (function() {
 
     this.$container.on('variantChange' + this.namespace, this.updateAddToCartState.bind(this));
     this.$container.on('variantPriceChange' + this.namespace, this.updateProductPrices.bind(this));
-    this.$productThumbnails.on('click', this.updateThumbnailImage.bind(this));
-
 
     if (this.$featuredImage.length > 0) {
       this.settings.imageSize = slate.Image.imageSize(this.$featuredImage.attr('src'));
@@ -64,6 +67,17 @@ shoka.Product = (function() {
 
       this.$container.on('variantImageChange' + this.namespace, this.updateProductImage.bind(this));
     }
+
+    /**
+     * Initialize product image slider
+     */
+    $(selectors.productImageSlider).slick({
+      arrows: false,
+      dots: false,
+      draggable: false,
+      fade: true
+    });
+    this.$productThumbnails.on('click', this.updateSliderImage.bind(this));
   }
 
   Product.prototype = $.extend({}, Product.prototype, {
@@ -105,6 +119,7 @@ shoka.Product = (function() {
       var variant = evt.variant;
       var $comparePrice = $(selectors.comparePrice, this.$container);
       var $compareEls = $comparePrice.add(selectors.comparePriceText, this.$container);
+      var $saleNotice = $(selectors.productSaleNotice, this.$container);
 
       $(selectors.productPrice, this.$container)
         .html(slate.Currency.formatMoney(variant.price, theme.moneyFormat));
@@ -112,9 +127,11 @@ shoka.Product = (function() {
       if (variant.compare_at_price > variant.price) {
         $comparePrice.html(slate.Currency.formatMoney(variant.compare_at_price, theme.moneyFormat));
         $compareEls.removeClass('hide');
+        $saleNotice.removeClass('hide');
       } else {
         $comparePrice.html('');
         $compareEls.addClass('hide');
+        $saleNotice.addClass('hide');
       }
     },
 
@@ -130,10 +147,9 @@ shoka.Product = (function() {
       this.$featuredImage.attr('src', sizedImgUrl);
     },
 
-    updateThumbnailImage: function(evt) {
-      var newImgUrl = $(evt.target).attr('src');
-      var sizedImgUrl = slate.Image.getSizedImageUrl(newImgUrl, this.settings.imageSize);
-      console.log(sizedImgUrl);
+    updateSliderImage: function(evt) {
+      var imageIndex = $(evt.delegateTarget).data('image-index');
+      $('[data-product-image-slider]').slick('slickGoTo', imageIndex);
     },
 
     /**

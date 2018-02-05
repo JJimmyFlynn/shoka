@@ -1,5 +1,11 @@
 <section class="hero-slider index-section">
   <div id="heroSlider" class="hero-slider__inner slider-loading">
+  
+  {% comment %}
+  ------------------------------------------------------------------------------
+  Hero slider slides loop
+  ------------------------------------------------------------------------------
+  {% endcomment %}
   {% for block in section.blocks %}
     <div class="hero-slide hero-slide--{{ block.id }} is-lazyloaded lazyload" 
     data-bgset="{% include 'bg-set', image: block.settings.slide_image %}"  
@@ -22,6 +28,12 @@
   {% endfor %}
   </div>
   {% comment %} /__inner {% endcomment %}
+  
+  {% comment %}
+  ------------------------------------------------------------------------------
+  Hero slider dots navigation
+  ------------------------------------------------------------------------------
+  {% endcomment %}
   <div class="hero-slider__dots" id="heroSliderDots">
 
   </div>

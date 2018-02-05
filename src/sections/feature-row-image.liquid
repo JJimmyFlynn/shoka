@@ -1,4 +1,10 @@
 <section class="image-with-text index-section">
+  
+  {% comment %}
+  ------------------------------------------------------------------------------
+  Image block
+  ------------------------------------------------------------------------------
+  {% endcomment %}
   <div class="image-with-text__block image-block">
     <div class="image-block__image-wrap is-lazyloaded lazyload"
     data-bgset="{% include 'bg-set', image: section.settings.feature_row_image %}"
@@ -7,6 +13,12 @@
     {% comment %} /__image-wrap {% endcomment %}
   </div>
   {% comment %}/.image-block{% endcomment %}
+  
+  {% comment %}
+  ------------------------------------------------------------------------------
+  Text block
+  ------------------------------------------------------------------------------
+  {% endcomment %}
   <div class="image-with-text__block text-block">
     <div class="text-block__inner">
       {% if section.settings.feature_row_heading %}

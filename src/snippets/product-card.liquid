@@ -25,6 +25,12 @@
   {% if product.sku %}
     <meta itemprop="sku" content="{{ product.sku }}">
   {% endif %}
+
+  {% comment %}
+  ------------------------------------------------------------------------------
+  Product card image
+  ------------------------------------------------------------------------------
+  {% endcomment %}
   <div class="product-card__image">
     <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100 }}%">
       <a href="{{ product.url | within: collection }}" itemprop="url" content="{{ product.url | within: collection }}">
@@ -34,7 +40,13 @@
     </div>
     {% comment %} /.image-wrapper {% endcomment %}
   </div>
-  {% comment %} /__image {% endcomment %}
+  {% comment %} /product-card__image {% endcomment %}
+
+  {% comment %}
+  ------------------------------------------------------------------------------
+  Product card content
+  ------------------------------------------------------------------------------
+  {% endcomment %}
   <div class="product-card__info">
     <header>
       <h3 class="product-card__title"><a href="{{ product.url | within: collection }}"><span itemprop="name">{{ product.title }}</span></a></h3>
@@ -49,11 +61,17 @@
       {% endif %}
       <span itemprop="price" content="{{ product.price_max | money }}">{{ product.price_max | money }}</span>{% if product.price < product.compare_at_price_max %}<span class="product-card__compare-price"><s>{{ product.compare_at_price | money }}</s></span>{% endif %}
     </p>
+    
+    {% comment %}
+    ------------------------------------------------------------------------------
+    Product card notices
+    ------------------------------------------------------------------------------
+    {% endcomment %}
     {% if is_on_sale or is_top_seller %}
       <span class="product-card__notice{% if is_on_sale %} is-sale{% endif %}{% if is_top_seller %} is-top-seller{% endif %}">{{ notice_text }}</span>
     {% endif %}
   </div>
-  {% comment %} /__info {% endcomment %}
+  {% comment %} /product-card__info {% endcomment %}
   {% comment %} <div class="product-card__cta">
     <a href="{{ product.url | within: collection }}" class="button button--primary button--small">View</a>
   </div> {% endcomment %}

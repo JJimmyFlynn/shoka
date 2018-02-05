@@ -10,6 +10,12 @@
     {% include 'icon-menu-toggle' %}
   </div>
   {% comment %}/__menu-toggle{% endcomment %}
+
+  {% comment %}
+  ------------------------------------------------------------------------------
+  Shop logo
+  ------------------------------------------------------------------------------
+  {% endcomment %}
   <div class="site-header__item site-header__center-content">
     {% if template.name == 'index' %}
       <h1 class="no-margin" itemscope itemtype="http://schema.org/Organization">
@@ -33,6 +39,12 @@
       </div>
       {% comment %}/.h1{% endcomment %}
     {% endif %}
+
+    {% comment %}
+    ------------------------------------------------------------------------------
+    Header social links
+    ------------------------------------------------------------------------------
+    {% endcomment %}
     <div class="site-header__item site-header__social header-social">
       <a href="#0" class="header-social__item">
         <span class="visually-hidden">{{ shop.name }} on Facebook</span>
@@ -54,12 +66,24 @@
     {% comment %}/.header-social{% endcomment %}
   </div>
   {% comment %}/__center-content{% endcomment %}
+
+  {% comment %}
+  ------------------------------------------------------------------------------
+  Header search
+  ------------------------------------------------------------------------------
+  {% endcomment %}
   <div class="site-header__item site-header__search">
     <span id="header-search-toggle" class="search-toggle">
       {% include 'icon-search' %}
     </span>
   </div>
   {% comment %}/__search{% endcomment %}
+
+  {% comment %}
+  ------------------------------------------------------------------------------
+  Cart toggle
+  ------------------------------------------------------------------------------
+  {% endcomment %}
   <div class="site-header__item site-header__cart">
     <span id="header-cart-toggle" class="cart-toggle">
       {% include 'icon-cart' %}

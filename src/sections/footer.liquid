@@ -1,6 +1,17 @@
 <footer class="site-footer">
   <div class="container flexgrid">
+    {% comment %}
+    ------------------------------------------------------------------------------
+    Left footer column
+    ------------------------------------------------------------------------------
+    {% endcomment %}
     <div class="flexgrid__item two-thirds--medium-up one-whole flexgrid footer-column">
+      
+      {% comment %}
+      ------------------------------------------------------------------------------
+      Contact info column
+      ------------------------------------------------------------------------------
+      {% endcomment %}
       <div class="flex-grid__item one-third--small-up one-whole footer-column">
         <h3 class="site-footer__heading">Get in Touch</h3>
         <div class="site-footer__contact">
@@ -9,6 +20,12 @@
         {% comment %} /.site-footer__contact {% endcomment %}
       </div>
       {% comment %} /.flexgrid__item {% endcomment %}
+      
+      {% comment %}
+      ------------------------------------------------------------------------------
+      Social profiles column
+      ------------------------------------------------------------------------------
+      {% endcomment %}
       <div class="flexgrid__item one-third--small-up one-whole footer-column">
         <h3 class="site-footer__heading">Follow Us</h3>
         <div class="site-footer__social footer-social">
@@ -40,6 +57,12 @@
         {% comment %} /.site-footer__social {% endcomment %}
       </div>
       {% comment %} /.flexgrid__item {% endcomment %}
+      
+      {% comment %}
+      ------------------------------------------------------------------------------
+      Footer navigation column
+      ------------------------------------------------------------------------------
+      {% endcomment %}
       <div class="flexgrid__item one-third--small-up one-whole footer-column">
         <h3 class="site-footer__heading">Customer Help</h3>
         <nav class="site-footer__nav footer-nav">
@@ -52,6 +75,12 @@
       {% comment %} /.flexgrid__item {% endcomment %}
     </div>
     {% comment %} /site-footer__footer-column {% endcomment %}
+    
+    {% comment %}
+    ------------------------------------------------------------------------------
+    Newsletter column / right footer column
+    ------------------------------------------------------------------------------
+    {% endcomment %}
     <div class="flexgrid__item one-third--medium-up one-whole footer-column site-footer__newsletter">
       <h3 class="site-footer__heading">Signup for News</h3>
       {% form 'customer' %}

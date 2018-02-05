@@ -1,10 +1,22 @@
 <article class="article-card flexgrid__item one-whole one-third--medium-up">
+	
+	{% comment %}
+	------------------------------------------------------------------------------
+	Article card image
+	------------------------------------------------------------------------------
+	{% endcomment %}
 	<div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%">
 		<a href="{{ article.url }}">
 			<img class="article-card__image is-lazyloaded lazyload" data-srcset="{% include 'srcset', image: article.image | img_url %}" src="{{ article.image | img_url }}" alt="{{ article.image.alt }}">
 		</a>
 	</div>
 	{% comment %} /.image-wrapper {% endcomment %}
+
+	{% comment %}
+	------------------------------------------------------------------------------
+	Article card content
+	------------------------------------------------------------------------------
+	{% endcomment %}
 	<div class="article-card__content">
 		<header>
 			<p class="article-card__publish-date">{{ article.published_at | time_tag: '%B %e, %Y' }}</p>

@@ -1,8 +1,20 @@
 <section class="featured-collection index-section">
   <div class="container">
+    
+    {% comment %}
+    ------------------------------------------------------------------------------
+    Section Heading
+    ------------------------------------------------------------------------------
+    {% endcomment %}
     {% if section.settings.fc_heading %}
       <h2 class="featured-collection__heading section-heading">{{ section.settings.fc_heading }}</h2>
     {% endif %}
+
+    {% comment %}
+    ------------------------------------------------------------------------------
+    Product card grid
+    ------------------------------------------------------------------------------
+    {% endcomment %}
     <div class="flexgrid flexgrid--guttered" itemscope itemtype="http://schema.org/ItemList">
       <meta itemprop="numberOfItems" content="3">
       {% assign collection = collections[section.settings.fc_collection] %}

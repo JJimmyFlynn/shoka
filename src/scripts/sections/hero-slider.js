@@ -27,7 +27,7 @@
     var sectionId = this.$container.attr('data-section-id');
 
 
-    $heroSlider.on('init', () => heroSlider.removeClass('slider-loading'));
+    $heroSlider.on('init', () => $heroSlider.removeClass('slider-loading'));
     //  Initialize slick slider
     $heroSlider.slick({
       arrows: false,

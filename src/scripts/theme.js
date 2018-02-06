@@ -24,6 +24,7 @@ $(document).ready(function() {
   var sections = new slate.Sections();
   sections.register('product', shoka.Product);
   sections.register('hero-slider', shoka.HeroSlider);
+  sections.register('header', shoka.SiteHeader);
 
   // Common a11y fixes
   slate.a11y.pageLinkFocus($(window.location.hash));

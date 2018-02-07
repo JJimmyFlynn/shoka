@@ -87,6 +87,17 @@ select::-ms-expand {
   display: none;
 }
 
+.styled-select {
+  padding: 1.4rem 1rem;
+  border-width: 2px;
+  border-radius: $border-radius;
+  &:hover,
+  &:focus {
+    border-color: $color-primary;
+    outline: none;
+  }
+}
+
 //-----------------------------------------
 // Error Styles
 //-----------------------------------------

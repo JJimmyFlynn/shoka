@@ -86,15 +86,7 @@
 .product-details__option-select { 
 	margin-bottom: 1rem;
 	select {
-		padding: 1.4rem 1rem;
 		width: 100%;
-		border-width: 2px;
-		border-radius: $border-radius;
-		&:hover,
-		&:focus {
-			border-color: $color-primary;
-			outline: none;
-		}
 	}
 }
 .product-details__quantity {

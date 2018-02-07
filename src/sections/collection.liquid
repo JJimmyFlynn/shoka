@@ -1,0 +1,74 @@
+<section class="collection">
+	<div class="container">
+		<div class="breadcrumbs collection__breadcrumbs">
+			<a href="{{ shop.url }}" class="breadcrumbs__link">Home</a>
+			<span class="breadcrumbs__arrow">{% include 'icon-arrow-right' %}</span>
+			<a href="{{ collection.url }}" class="breadcrumbs__link">{{ collection.title }}</a>
+		</div>
+		{% comment %} /.breadcrumbs {% endcomment %}
+		<header class="collection-header">
+			<h1 class="collection__title">{{ collection.title }}</h1>
+			{% if collection.description != blank %}
+				<div class="rte">
+					{{ collection.description }}
+				</div>
+			{% endif %}
+		</header>
+
+		<div class="collection__actions">
+			<div class="collection__sort">
+				{%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+				<label for="sort-by">Sort by:</label>
+				<select class="styled-select" id="sort-by">
+					<option value="manual" {% if sort_by == "manual" %} selected="selected"{% endif %}>Featured</option>
+					<option value="price-ascending" {% if sort_by == "price-ascending" %} selected="selected"{% endif %}>Price: Low to High</option>
+					<option value="price-descending" {% if sort_by == "price-descending" %} selected="selected"{% endif %}>Price: High to Low</option>
+					<option value="title-ascending" {% if sort_by == "title-ascending" %} selected="selected"{% endif %}>A-Z</option>
+					<option value="title-descending" {% if sort_by == "title-descending" %} selected="selected"{% endif %}>Z-A</option>
+					<option value="created-ascending" {% if sort_by == "created-ascending" %} selected="selected"{% endif %}>Oldest to Newest</option>
+					<option value="created-descending" {% if sort_by == "created-descending" %} selected="selected"{% endif %}>Newest to Oldest</option>
+					<option value="best-selling" {% if sort_by == "best-selling" %} selected="selected"{% endif %}>Best Selling</option>
+				</select>
+			</div>
+			{% comment %} /.collection__sort {% endcomment %}
+		</div>
+		{% comment %} /.collection__actions {% endcomment %}
+	</div>
+	{% comment %} /.container {% endcomment %}
+	<div class="collection__list">
+		<div class="container">
+			<div class="flexgrid flexgrid--guttered">
+				{% for product in collection.products %}
+					{% include 'product-card' %}
+				{% endfor %}	
+			</div>
+			{% comment %} /.flexgird {% endcomment %}
+		</div>
+		{% comment %} /.container {% endcomment %}
+	</div>
+	{% comment %} /.collection__list {% endcomment %}
+</section>
+
+<script>
+Shopify.queryParams = {};
+if (location.search.length) {
+  for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
+    aKeyValue = aCouples[i].split('=');
+    if (aKeyValue.length > 1) {
+      Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
+    }
+  }
+}
+jQuery('#sort-by')
+  .val('{{ collection.sort_by | default: collection.default_sort_by | escape }}')
+  .bind('change', function() {
+    Shopify.queryParams.sort_by = jQuery(this).val();
+    location.search = jQuery.param(Shopify.queryParams).replace(/\+/g, '%20');
+  });
+</script>
+
+{% schema %}
+	{
+		"name": "Collection Page"
+	}
+{% endschema %}

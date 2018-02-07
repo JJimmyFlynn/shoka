@@ -52,16 +52,15 @@
 // Site Logo
 //-----------------------------------------
 .site-logo {
-  padding: 0.8rem 0;
   font-family: $font-stack-header;
   text-decoration: none;
   color: $color-primary;
+  h1 {
+    margin: 0;
+  }
 }
 .site-header__logo-image {
   display: block;
-  img {
-    vertical-align: bottom;
-  }
 }
 
 //-----------------------------------------

@@ -1,0 +1,40 @@
+//--------------------------------------------------------------
+// Collection Template Styles
+//--------------------------------------------------------------
+.collection { 
+	padding-top: 3rem;
+}
+
+//-----------------------------------------
+// Colelction Title
+//-----------------------------------------
+.collection__title {
+	margin: 0;
+	font-size: 2.4rem;
+	text-align: center;
+	@include breakpoint($medium--up) {
+		font-size: 4.2rem;
+	}
+}
+
+.collection__list {
+	padding: 3rem 0;
+	background-color: $color-secondary;
+}
+
+//-----------------------------------------
+// Colelction Actions
+//-----------------------------------------
+.collection__actions {
+	display: flex;
+	justify-content: flex-end;
+	padding-bottom: 1rem;
+}
+.collection__sort {
+	label {
+		display: block;
+	}
+	select {
+		width: 18rem;
+	}
+}

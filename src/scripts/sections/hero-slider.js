@@ -7,7 +7,7 @@
  */
 
  shoka.HeroSlider = (function() {
-
+  
   /**
    * Hero Slider section constructor. Runs on page load as well as Theme Editor
    * `section:load` events.
@@ -15,10 +15,9 @@
    */
   function HeroSlider(container) {
     //  Get instance of slider
-    var $heroSlider = $('#heroSlider');
-
+    this.$heroSlider = $('#heroSlider');
     //  Exit if there is hero slider section
-    if( !$heroSlider.html() ) {
+    if( !this.$heroSlider.html() ) {
       return;
     }
 
@@ -27,9 +26,9 @@
     var sectionId = this.$container.attr('data-section-id');
 
 
-    $heroSlider.on('init', () => $heroSlider.removeClass('slider-loading'));
+    this.$heroSlider.on('init', () => this.$heroSlider.removeClass('slider-loading'));
     //  Initialize slick slider
-    $heroSlider.slick({
+    this.$heroSlider.slick({
       arrows: false,
       dots: true,
       appendDots: $('#heroSliderDots')
@@ -40,8 +39,19 @@
    * Extend HeroSlider to include Shopify Section events
    */
   HeroSlider.prototype = $.extend({}, HeroSlider.prototype, {
-    onSelect: function() {
-      console.log($heroSlider);
+    onBlockSelect: function(evt) {
+      // Find the block the user selected
+      var slideId = evt.detail.blockId;
+      var slideIndex = $('.hero-slide--' + slideId).data('slick-index');
+      
+      // Go to the selected block and pause the slider
+      this.$heroSlider.slick('slickGoTo', slideIndex);
+      this.$heroSlider.slick('slickPause');
+    },
+
+    onBlockDeselect: function(evt) {
+      // Resume the slider when a slide is deselected
+      this.$heroSlider.slick('slickPlay')
     }
   });
 

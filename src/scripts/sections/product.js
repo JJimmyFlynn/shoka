@@ -58,6 +58,9 @@ shoka.Product = (function() {
     this.$featuredImage = $(selectors.productFeaturedImage, this.$container);
     this.$productThumbnails = $(selectors.productThumbs, this.$container);
 
+    this.initializeProductSlider();
+    this.$productThumbnails.on('click', this.updateSliderImage.bind(this));
+
     this.$container.on('variantChange' + this.namespace, this.updateAddToCartState.bind(this));
     this.$container.on('variantPriceChange' + this.namespace, this.updateProductPrices.bind(this));
 
@@ -68,19 +71,21 @@ shoka.Product = (function() {
       this.$container.on('variantImageChange' + this.namespace, this.updateProductImage.bind(this));
     }
 
-    /**
-     * Initialize product image slider
-     */
-    $(selectors.productImageSlider).slick({
-      arrows: false,
-      dots: false,
-      draggable: false,
-      fade: true
-    });
-    this.$productThumbnails.on('click', this.updateSliderImage.bind(this));
   }
 
   Product.prototype = $.extend({}, Product.prototype, {
+
+    /**
+     * Initializes the product image slider
+     */
+    initializeProductSlider: function() {
+      $(selectors.productImageSlider).slick({
+        arrows: false,
+        dots: false,
+        draggable: false,
+        fade: true
+      });
+    },
 
     /**
      * Updates the DOM state of the add to cart button

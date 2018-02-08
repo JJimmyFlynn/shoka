@@ -15,6 +15,7 @@ window.shoka = window.shoka || {};
 // =require sections/product.js
 // =require sections/hero-slider.js
 // =require sections/header.js
+// =require sections/collection.js
 
 /*================ Templates ================*/
 // =require templates/customers-addresses.js
@@ -25,6 +26,7 @@ $(document).ready(function() {
   sections.register('product', shoka.Product);
   sections.register('hero-slider', shoka.HeroSlider);
   sections.register('header', shoka.SiteHeader);
+  sections.register('collection', shoka.Collection);
 
   // Common a11y fixes
   slate.a11y.pageLinkFocus($(window.location.hash));

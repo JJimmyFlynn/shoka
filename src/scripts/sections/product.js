@@ -30,6 +30,7 @@ shoka.Product = (function() {
    * @param {string} container - selector for the section container DOM element
    */
   function Product(container) {
+    // Get the current product template section instance
     this.$container = $(container);
 
     // Stop parsing if we don't have the product json script tag when loading
@@ -38,9 +39,12 @@ shoka.Product = (function() {
       return;
     }
 
+    // Get Shopify generated section ID
     var sectionId = this.$container.attr('data-section-id');
+    // Get and parse JSON product data
     this.productSingleObject = JSON.parse($(selectors.productJson, this.$container).html());
 
+    // Setup options for slate.variants()
     var options = {
       $container: this.$container,
       enableHistoryState: this.$container.data('enable-history-state') || false,
@@ -58,18 +62,19 @@ shoka.Product = (function() {
     this.$featuredImage = $(selectors.productFeaturedImage, this.$container);
     this.$productThumbnails = $(selectors.productThumbs, this.$container);
 
+    /**
+     * Initialize product image slider and bind
+     * update event to product thumbnails
+     */
     this.initializeProductSlider();
     this.$productThumbnails.on('click', this.updateSliderImage.bind(this));
 
+    /**
+     * Bind price and availability
+     * updates to variant changes
+     */
     this.$container.on('variantChange' + this.namespace, this.updateAddToCartState.bind(this));
     this.$container.on('variantPriceChange' + this.namespace, this.updateProductPrices.bind(this));
-
-    if (this.$featuredImage.length > 0) {
-      this.settings.imageSize = slate.Image.imageSize(this.$featuredImage.attr('src'));
-      slate.Image.preload(this.productSingleObject.images, this.settings.imageSize);
-
-      this.$container.on('variantImageChange' + this.namespace, this.updateProductImage.bind(this));
-    }
 
   }
 
@@ -141,17 +146,11 @@ shoka.Product = (function() {
     },
 
     /**
-     * Updates the DOM with the specified image URL
-     *
-     * @param {string} src - Image src URL
+     * Update the product sldier image
+     * when a thumbnail is clicked
+     * 
+     * @param {object} evt - The click event
      */
-    updateProductImage: function(evt) {
-      var variant = evt.variant;
-      var sizedImgUrl = slate.Image.getSizedImageUrl(variant.featured_image.src, this.settings.imageSize);
-
-      this.$featuredImage.attr('src', sizedImgUrl);
-    },
-
     updateSliderImage: function(evt) {
       var imageIndex = $(evt.delegateTarget).data('image-index');
       $('[data-product-image-slider]').slick('slickGoTo', imageIndex);

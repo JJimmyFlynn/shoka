@@ -23,10 +23,11 @@
 
     // Setup section variavles as required by Slate
     this.$container = $(container);
+    this.namespace = '.heroSlider';
     var sectionId = this.$container.attr('data-section-id');
 
 
-    this.$heroSlider.on('init', () => this.$heroSlider.removeClass('slider-loading'));
+    this.$heroSlider.on('init' + this.namespace, () => this.$heroSlider.removeClass('slider-loading'));
     //  Initialize slick slider
     this.$heroSlider.slick({
       arrows: false,
@@ -39,6 +40,7 @@
    * Extend HeroSlider to include Shopify Section events
    */
   HeroSlider.prototype = $.extend({}, HeroSlider.prototype, {
+    
     onBlockSelect: function(evt) {
       // Find the block the user selected
       var slideId = evt.detail.blockId;
@@ -52,6 +54,11 @@
     onBlockDeselect: function(evt) {
       // Resume the slider when a slide is deselected
       this.$heroSlider.slick('slickPlay')
+    },
+
+    onUnload: function() {
+      // Detch event listeners
+      $this.$heroSlider.off(this.namespace);
     }
   });
 

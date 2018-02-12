@@ -21,7 +21,8 @@ shoka.Product = (function() {
     productThumbs: '[data-product-single-thumbnail]',
     singleOptionSelector: '[data-single-option-selector]',
     productImageSlider: '[data-product-image-slider]',
-    productSaleNotice: '[data-product-sale-notice]'
+    productSaleNotice: '[data-product-sale-notice]',
+    productForm: '[data-product-form]'
   };
 
   /**
@@ -61,6 +62,7 @@ shoka.Product = (function() {
     this.variants = new slate.Variants(options);
     this.$featuredImage = $(selectors.productFeaturedImage, this.$container);
     this.$productThumbnails = $(selectors.productThumbs, this.$container);
+    this.$productForm = $(selectors.productForm, this.$container);
 
     /**
      * Initialize product image slider and bind
@@ -101,9 +103,7 @@ shoka.Product = (function() {
     updateAddToCartState: function(evt) {
       var variant = evt.variant;
 
-      if (variant) {
-        $(selectors.priceWrapper, this.$container).removeClass('hide');
-      } else {
+      if (variant.unavailable) {
         $(selectors.addToCart, this.$container).prop('disabled', true);
         $(selectors.addToCartText, this.$container).html(theme.strings.unavailable);
         $(selectors.priceWrapper, this.$container).addClass('hide');

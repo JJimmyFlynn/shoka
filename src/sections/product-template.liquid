@@ -125,7 +125,7 @@
 					Product Form
 					------------------------------------------------------------------------------
 					{% endcomment %}
-					<form class="product-details__form" action="/cart/add" method="post" enctype="multipart/form-data">
+					<form id="productForm" class="product-details__form" action="/cart/add" method="post" enctype="multipart/form-data" data-product-form>
 
 						{% unless product.has_only_default_variant %}
 							{% for option in product.options_with_values %}
@@ -163,12 +163,12 @@
 						</select>
 
 						<div class="flexgrid flexgrid--guttered">
-							<div class="product-details__quantity-wrapper flexgrid__item one-half">
+							<div class="product-details__quantity-wrapper flexgrid__item one-half--small-up one-whole">
 								<label class="product-details__form-label" for="Quantity">Quantity</label>
 								<input class="product-details__quantity" type="number" id="Quantity" name="quantity" value="1" min="1">
 							</div>
 							{% comment %} /.product-details__quantity-wrapper {% endcomment %}
-							<div class="product-details__add-wrapper flexgrid__item one-half">
+							<div class="product-details__add-wrapper flexgrid__item one-half--small-up one-whole">
 								<button
 									type="submit"
 									name="add"

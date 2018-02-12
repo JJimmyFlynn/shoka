@@ -29,6 +29,10 @@
     background-color: darken($color-primary, 10%);
     color: #fff;;
   }
+  &[disabled] {
+    background-color: $color-disabled;
+    cursor: not-allowed;
+  }
 }
 
 //-----------------------------------------

@@ -91,9 +91,13 @@
 }
 .product-details__quantity {
 	width: 100%;
+	margin-bottom: 1rem;
 	padding: 1.4rem 1rem;
 	border-width: 2px;
 	border-radius: $border-radius;
+	@include breakpoint($small--up) {
+		margin-bottom: 0;
+	}
 	&:hover,
 	&:focus {
 		border-color: $color-primary;

@@ -16,6 +16,15 @@
 		</header>
 
 		<div class="collection__actions">
+			<div class="collection__vendors">
+				<label for="vendor-sort">Vendor:</label>
+				<select name="vendor-sort" id="vendor-sort" class="styled-select">
+					{% for vendor in collection.all_vendors %}
+						<option value="{{ vendor | split: ' ' | join: '+' }}">{{ vendor }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			{% comment %} /.collection__vendor {% endcomment %}
 			<div class="collection__sort">
 				{%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
 				<label for="sort-by">Sort by:</label>

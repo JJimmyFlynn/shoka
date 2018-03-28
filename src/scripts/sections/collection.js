@@ -6,6 +6,7 @@ shoka.Collection = (function() {
 
 	function Collection() {
 		this.sortByInit();
+		this.vendorSortInit();
 	}
 
 	Collection.prototype = $.extend({}, Collection.prototype, {
@@ -24,6 +25,13 @@ shoka.Collection = (function() {
 					Shopify.queryParams.sort_by = $(this).val();
 					location.search = $.param(Shopify.queryParams).replace(/\+/g, '%20');
 			});
+		},
+
+		vendorSortInit: function() {
+			$('#vendor-sort')
+				.bind('change', function() {
+					
+				});
 		}
 	});
 

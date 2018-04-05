@@ -2,6 +2,8 @@
   "name": "shoka",
   "version": "0.0.1",
   "devDependencies": {
-    "@shopify/slate-tools": "0.13.0"
+		"@shopify/slate-tools": "0.13.0",
+		"eslint-plugin-shopify": "^19.0.0",
+    "stylelint-config-shopify": "^4.0.0"
   }
 }

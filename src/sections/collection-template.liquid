@@ -18,9 +18,10 @@
 		<div class="collection__actions">
 			<div class="collection__vendors">
 				<label for="vendor-sort">Vendor:</label>
-				<select name="vendor-sort" id="vendor-sort" class="styled-select">
-					{% for vendor in collection.all_vendors %}
-						<option value="{{ vendor | split: ' ' | join: '+' }}">{{ vendor }}</option>
+				<select name="vendor-sort" id="vendor-sort" class="styled-select" data-vendor-sort>
+						<option value="/collections/all">All Vendors</option>
+					{% for vendor in collections['all'].all_vendors %}
+						<option value="/collections/vendors?q={{ vendor | split: ' ' | join: '%20' }}" {% if collection.title == vendor %} selected="selected"{% endif %}>{{ vendor }}</option>
 					{% endfor %}
 				</select>
 			</div>
@@ -28,7 +29,7 @@
 			<div class="collection__sort">
 				{%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
 				<label for="sort-by">Sort by:</label>
-				<select class="styled-select" id="sort-by">
+				<select class="styled-select" id="sort-by" data-collection-sort>
 					<option value="manual" {% if sort_by == "manual" %} selected="selected"{% endif %}>Featured</option>
 					<option value="price-ascending" {% if sort_by == "price-ascending" %} selected="selected"{% endif %}>Price: Low to High</option>
 					<option value="price-descending" {% if sort_by == "price-descending" %} selected="selected"{% endif %}>Price: High to Low</option>

@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "plugin:shopify/esnext",
+    "plugin:shopify/jquery"
+  ],
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "no-console": 0,
+    "node/shebang": 0,
+    "import/no-anonymous-default-export": 0,
+    "import/no-unresolved": ["error", {"ignore": ["^jquery"]}]
+  },
+  "globals": {
+    "document": true,
+    "window": true,
+    "Shopify": true
+  }
+}

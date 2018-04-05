@@ -10,8 +10,9 @@
 //-----------------------------------------
 .collection__title {
 	margin: 0;
-	font-size: 2.4rem;
 	text-align: center;
+	font-size: 2.4rem;
+
 	@include breakpoint($medium--up) {
 		font-size: 4.2rem;
 	}
@@ -27,14 +28,32 @@
 //-----------------------------------------
 .collection__actions {
 	display: flex;
-	justify-content: flex-end;
-	padding-bottom: 1rem;
+	flex-direction: column;
+	justify-content: space-between;
+	padding-bottom: $gutter--small;
+
+	@include breakpoint($small--up) {
+		flex-direction: row;
+	}
 }
-.collection__sort {
+
+.collection__sort,
+.collection__vendors {
+	display: block;
+	
 	label {
 		display: block;
 	}
+
 	select {
-		width: 18rem;
+		width: 100%;
+
+		@include breakpoint($small--up) {
+			width: 18rem;	
+		}
 	}
+}
+
+.collection__vendors {
+	margin-bottom: $gutter--small;
 }

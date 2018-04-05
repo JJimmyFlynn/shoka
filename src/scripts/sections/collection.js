@@ -20,7 +20,7 @@ shoka.Collection = (function() {
 					}
 				}
 			}
-			$('#sort-by')
+			$('[data-collection-sort]')
 				.bind('change', function() {
 					Shopify.queryParams.sort_by = $(this).val();
 					location.search = $.param(Shopify.queryParams).replace(/\+/g, '%20');
@@ -28,9 +28,9 @@ shoka.Collection = (function() {
 		},
 
 		vendorSortInit: function() {
-			$('#vendor-sort')
+			$('[data-vendor-sort]')
 				.bind('change', function() {
-					
+					window.location = $(this).val();
 				});
 		}
 	});

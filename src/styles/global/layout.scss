@@ -21,12 +21,20 @@ li {
 // Containers
 //-----------------------------------------
 .container {
-  @include clearfix();
-  max-width: $container;
-  padding: 0 $gutter;
   margin: 0 auto;
+  padding: 0 $gutter;
+  max-width: $container;
+
+  @include clearfix();
 }
 
 .hide {
   display: none;
+}
+
+//-----------------------------------------
+// Tables
+//-----------------------------------------
+table {
+  border-spacing: 0;
 }

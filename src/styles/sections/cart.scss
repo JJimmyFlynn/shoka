@@ -1,0 +1,149 @@
+//--------------------------------------------------------------
+// Cart Styles
+//--------------------------------------------------------------
+.cart-wrapper {
+  padding: 4rem 0;
+  background-color: $color-secondary;
+}
+
+.cart-table {
+  margin-bottom: $gutter;
+  padding: $gutter;
+  width: 100%;
+  border-top: 4px solid $color-primary;
+  border-radius: $border-radius;
+  background-color: white;
+  box-shadow: 0 2px rgba($color-grey, 0.1);
+}
+
+.cart-table__header {
+  padding: $gutter--small 0 $gutter;
+  min-width: 10rem;
+  border-bottom: 1px solid $color-border;
+  font-size: 1.8rem;
+}
+
+.cart-table__cell {
+  padding: $gutter 0;
+
+  @include breakpoint($medium--up) {
+    border-bottom: 1px solid $color-border;
+  }
+}
+
+.cart-table__row:last-of-type {
+  .cart-table__cell {
+    border-bottom: none;
+  }
+}
+
+//-----------------------------------------
+// Product Image
+//-----------------------------------------
+.cart-table__product-image {
+  padding: $gutter;
+
+  figure {
+    margin-top: 4rem;
+
+    @include breakpoint($medium--up) {
+      margin-top: 0;
+    }
+  }
+}
+
+//-----------------------------------------
+// Product Info
+//-----------------------------------------
+.cart-table__product-info {
+  text-align: right;
+}
+
+//-----------------------------------------
+// Product Title
+//-----------------------------------------
+.cart-table__product-title {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+//-----------------------------------------
+// Remove Product Link
+//-----------------------------------------
+.cart-table__remove {
+  color: $color-primary;
+}
+
+//-----------------------------------------
+// Variant, Vendor, Properties
+//-----------------------------------------
+.cart-table__product-variant,
+.cart-table__product-vendor,
+.cart-table__product-property {
+  font-size: 1.4rem;
+}
+
+//-----------------------------------------
+// Price
+//-----------------------------------------
+.cart-table__price {
+  text-align: center;
+}
+
+//-----------------------------------------
+// Quantity
+//-----------------------------------------
+.cart-table__quantity {
+  text-align: center;
+}
+
+.quantity-actions {
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+//-----------------------------------------
+// Total
+//-----------------------------------------
+.cart-table__total {
+  text-align: center;
+}
+
+
+//-----------------------------------------
+// Cart Info
+//-----------------------------------------
+.cart-info {
+  text-align: right;
+}
+
+//-----------------------------------------
+// Subtotal
+//-----------------------------------------
+.cart-info__subtotal {
+  position: relative;
+  margin-bottom: $gutter;
+  padding-bottom: $gutter;
+  font-weight: $font-weight-bold;
+  font-size: 2.4rem;
+  font-family: $font-stack-header;
+  &:after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 3rem;
+    height: 0.4rem;
+    background-color: $color-primary;
+    content: '';
+  }
+}
+
+//-----------------------------------------
+// Shipping Notice
+//-----------------------------------------
+.cart-info__shipping {
+  margin-bottom: $gutter;
+  color: $color-grey;
+  font-size: 1.5rem;
+}

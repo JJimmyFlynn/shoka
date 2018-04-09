@@ -1,59 +1,53 @@
 //--------------------------------------------------------------
 // Collection Template Styles
 //--------------------------------------------------------------
-.collection { 
-	padding-top: 3rem;
+.collection {
+  padding-top: 3rem;
 }
 
 //-----------------------------------------
-// Colelction Title
+// Colelction List
 //-----------------------------------------
-.collection__title {
-	margin: 0;
-	text-align: center;
-	font-size: 2.4rem;
-
-	@include breakpoint($medium--up) {
-		font-size: 4.2rem;
-	}
-}
 
 .collection__list {
-	padding: 3rem 0;
-	background-color: $color-secondary;
+  padding: 3rem 0 1rem;
+  background-color: $color-secondary;
+
+  .product-card {
+    margin-bottom: $gutter;
+  }
 }
 
 //-----------------------------------------
 // Colelction Actions
 //-----------------------------------------
 .collection__actions {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	padding-bottom: $gutter--small;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: $gutter--small;
 
-	@include breakpoint($small--up) {
-		flex-direction: row;
-	}
+  @include breakpoint($small--up) {
+    flex-direction: row;
+  }
 }
 
-.collection__sort,
-.collection__vendors {
-	display: block;
-	
-	label {
-		display: block;
-	}
+.collection__action-block {
+  display: block;
 
-	select {
-		width: 100%;
+  label {
+    display: block;
+  }
 
-		@include breakpoint($small--up) {
-			width: 18rem;	
-		}
-	}
+  select {
+    width: 100%;
+
+    @include breakpoint($small--up) {
+      width: 18rem;
+    }
+  }
 }
 
 .collection__vendors {
-	margin-bottom: $gutter--small;
+  margin-bottom: $gutter--small;
 }

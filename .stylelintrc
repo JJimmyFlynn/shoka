@@ -3,6 +3,8 @@
   "rules": {
     "selector-class-pattern": null,
     "selector-no-qualifying-type": null,
-    "selector-max-type": null
+    "selector-max-type": null,
+		"scss/double-slash-comment-whitespace-inside": null,
+    "selector-max-specificity": "0,4,0"
   }
 }

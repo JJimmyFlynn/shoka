@@ -1,0 +1,55 @@
+//--------------------------------------------------------------
+// Pagination Styles
+//--------------------------------------------------------------
+
+.pagination-wrapper {
+  margin-top: $gutter;
+  text-align: center;
+  font-size: 1.8rem;
+
+  //-----------------------------------------
+  // General Styles
+  //-----------------------------------------
+  .page,
+  .next,
+  .prev {
+    padding: 0.5rem 1rem;
+    border-radius: $border-radius;
+    background-color: $color-primary;
+    color: white;
+    transition: background-color 0.15s ease;
+
+    &:not(.current):hover {
+      background-color: darken($color-primary, 15%);
+    }
+  }
+
+  //-----------------------------------------
+  // Spacing
+  //-----------------------------------------
+  .page {
+    margin-right: 0.5rem;
+  }
+
+  .prev {
+    margin-right: 0.5rem;
+  }
+
+  //-----------------------------------------
+  // Link Styles
+  //-----------------------------------------
+  a {
+    display: inline-block;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  //-----------------------------------------
+  // Current Page
+  //-----------------------------------------
+  .current {
+    background-color: $color-disabled;
+  }
+}

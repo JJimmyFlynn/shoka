@@ -5,6 +5,7 @@
   p {
     margin-bottom: 1.6rem;
   }
+  
   img {
     height: auto;
   }
@@ -45,9 +46,9 @@
 // how many columns they will contain. Class added by JS.
 // sass-lint:disable no-misspelled-properties
 .rte-table {
-  max-width: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  max-width: 100%;
 }
 
 // This class is wrapped around YouTube/Vimeo embeds in the RTE
@@ -55,8 +56,8 @@
 .rte__video-wrapper {
   position: relative;
   overflow: hidden;
-  max-width: 100%;
   padding-bottom: 56.25%;
+  max-width: 100%;
   height: 0;
   height: auto;
 
@@ -72,7 +73,7 @@
 // This class is wrapped around tables in the RTE
 // to prevent layout breaking with a scrollable parent
 .rte__table-wrapper {
-  max-width: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  max-width: 100%;
 }

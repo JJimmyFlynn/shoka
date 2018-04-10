@@ -6,10 +6,10 @@ html {
 }
 
 body {
+  color: $color-body-text;
   font-size: 1.6rem;
   font-family: $font-stack-body;
   line-height: $font-line-height;
-  color: $color-body-text;
 }
 
 //-----------------------------------------
@@ -22,8 +22,8 @@ h4, .h4,
 h5, .h5,
 h6, .h6 {
   margin: 0 0 $gutter 0;
-  font-family: $font-stack-header;
   font-weight: $font-weight-header;
+  font-family: $font-stack-header;
 }
 
 //-----------------------------------------
@@ -32,8 +32,9 @@ h6, .h6 {
 .section-heading {
   font-size: 2.8rem;
   line-height: 1.45;
+
   @include breakpoint($medium--up) {
-    font-size: 3.4rem; 
+    font-size: 3.4rem;
   }
 }
 
@@ -42,9 +43,10 @@ h6, .h6 {
 //-----------------------------------------
 p {
   // No margins on paragraphs outside rich
-  // text content for easier styling 
+  // text content for easier styling
   margin: 0;
 }
+
 p:last-child {
   margin-bottom: 0;
 }
@@ -56,6 +58,7 @@ a {
   color: inherit;
   text-decoration: none;
   transition: color 0.15s ease-in-out;
+  
   &:hover {
     color: $color-primary;
   }

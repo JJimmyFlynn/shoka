@@ -1,0 +1,250 @@
+<section class="cart" data-section-id="{{ section.id }}" data-section-type="cart" data-enable-history-state="true">
+  <div class="container">
+    <header class="page-header">
+      <h1 class="page-header__title">{{ 'cart.general.title' | t }}</h1>
+    </header>
+  </div>
+  {% comment %} /.container {% endcomment %}
+  <div class="cart-wrapper">
+    {% if cart.item_count > 0 %}
+    {% comment %}
+    ------------------------------------------------------------------------------
+    Cart Wrapper
+    ------------------------------------------------------------------------------
+    {% endcomment %}
+      <div class="container">
+        <form action="/cart" method="post" novalidate>
+          {% comment %}
+          ------------------------------------------------------------------------------
+          Cart Table
+          ------------------------------------------------------------------------------
+          {% endcomment %}
+          <table class="responsive-table cart-table">
+            <thead class="small--hide">
+              <tr class="cart-table__header-row">
+                <th colspan="2" class="cart-table__header">Product</th>
+                <th class="cart-table__header">Price</th>
+                <th class="cart-table__header">Quantity</th>
+                <th class="cart-table__header">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {% for item in cart.items %}
+
+              {% comment %}
+
+              Cart Item Template
+              =====================
+              The data-label attributes on <td> elements are mobile-friendly
+              helpers used for responsive-table labels
+              {% endcomment %}
+
+                <tr class="responsive-table-row cart-table__row">
+                  {% comment %}
+                  ------------------------------------------------------------------------------
+                  Product Image
+                  ------------------------------------------------------------------------------
+                  {% endcomment %}
+                  <td class="cart-table__cell cart-table__product-image" data-label="{{ 'customer.order.product' | t }}">
+
+                    {% if item.image != blank %}
+                      <figure>
+                        <a href="{{ item.url | within: collections.all }}">
+                          {{ item | img_url: '240x240' | img_tag: item.title }}
+                        </a>
+                      </figure>
+                    {% endif %}
+
+                  </td>
+                  {% comment %}
+                  ------------------------------------------------------------------------------
+                  Product Info
+                  ------------------------------------------------------------------------------
+                  {% endcomment %}
+                  <td class="cart-table__cell cart-table__product-info">
+                    <a class="cart-table__product-title" href="{{ item.url }}">{{ item.product.title }}</a>
+
+                    {% unless item.product.has_only_default_variant %}
+                      <p class="cart-table__product-variant">{{ item.variant.title }}</p>
+                    {% endunless %}
+
+                    <p class="cart-table__product-vendor">{{ item.vendor }}</p>
+
+                    {%- assign property_size = item.properties | size -%}
+
+                    {% if property_size > 0 %}
+                      {% for p in item.properties %}
+                        {% unless p.last == blank %}
+                        {{ p.first }}:
+
+                        {% if p.last contains '/uploads/' %}
+                          <a class="cart-table__product-property" href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                        {% else %}
+                          {{ p.last }}
+                        {% endif %}
+
+                        {% endunless %}
+                      {% endfor %}
+                    {% endif %}
+                    {% comment %}
+                    ------------------------------------------------------------------------------
+                    Remove Link
+                    ------------------------------------------------------------------------------
+                    {% endcomment %}
+                    <a class="cart-table__remove" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">
+                      <small>{{ 'cart.general.remove' | t }}</small>
+                    </a>
+                  </td>
+
+                  {% comment %}
+                  ------------------------------------------------------------------------------
+                  Product Price
+                  ------------------------------------------------------------------------------
+                  {% endcomment %}
+                  <td class="cart-table__cell cart-table__price" data-label="{{ 'cart.label.price' | t }}">
+                    {% if item.original_line_price != item.line_price %}
+                      <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
+                      {{ item.price | money }}
+                      <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
+                      <s>{{ item.original_price | money }}</s>
+                    {% else %}
+                      {{ item.price | money }}
+                    {% endif %}
+                  </td>
+
+                  {% comment %}
+                  ------------------------------------------------------------------------------
+                  Product Quantity
+                  ------------------------------------------------------------------------------
+                  {% endcomment %}
+                  <td class="cart-table__cell cart-table__quantity" data-label="{{ 'cart.label.quantity' | t }}">
+                    <span>{{ item.quantity }}</span>
+                    <div class="quantity-actions">
+                      <a href="/cart/change?quantity={{ item.quantity |  minus: 1 }}&line={{ forloop.index }}" class="quantity-minus">–</a>
+                      <a href="/cart/change?quantity={{ item.quantity |  plus: 1 }}&line={{ forloop.index }}" class="quantity-plus">+</a>
+                    </div>
+                  </td>
+
+                  {% comment %}
+                  ------------------------------------------------------------------------------
+                  Product Total
+                  ------------------------------------------------------------------------------
+                  {% endcomment %}
+                  <td class="cart-table__cell cart-table__total" data-label="{{ 'cart.label.total' | t }}">
+                    {{ item.line_price | money }}
+                  </td>
+                </tr>
+
+              {% endfor %}
+            </tbody>
+          </table>
+
+          <section class="cart-info">
+            <p class="cart-info__subtotal">{{ 'cart.general.subtotal' | t }}: {{ cart.total_price | money }}</p>
+            {% if cart.total_discounts > 0 %}
+              <p class="cart-info__savings">{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
+            {% endif %}
+            <p class="cart-info__shipping">{{ 'cart.general.shipping_at_checkout' | t }}</p>
+            <div class="cart-info__actions">
+              <input type="submit" name="checkout" class="button button--primary" value="{{ 'cart.general.checkout' | t }}">
+            </div>
+            {% comment %} /.cart-info__actions {% endcomment %}
+          </section>
+          {% comment %} /.cart-info {% endcomment %}
+
+        </form>
+      </div>
+      {% comment %} /.container {% endcomment %}
+    {% else %}
+    {% comment %}
+    ------------------------------------------------------------------------------
+    Empty Cart State
+    ------------------------------------------------------------------------------
+    {% endcomment %}
+    <div class="container empty-cart">
+      {% comment %}
+      Cart empty state
+      {% endcomment %}
+      <div class="supports-cookies">
+        <p class="h1 empty-cart__heading">Your cart is empty</p>
+        <p class="empty-cart__continue">Continue shopping <a href="/collections/all">here</a></p>
+      </div>
+
+      {% comment %}
+      Cart no cookies state
+      ---------------------
+      Browser cookies are required to use the cart. If cookies aren't enabled in the
+      browser a message is displayed prompting the user to enable them.
+      {% endcomment %}
+      <div class="supports-no-cookies">
+        <p class="h1 empty-cart__heading">Enable cookies to use the shopping cart</p>
+      </div>
+    {% endif %}
+    </div>
+    {% comment %} /.container {% endcomment %}
+  </div>
+  {% comment %} /.cart-wrapper {% endcomment %}
+
+</section>
+
+{% if section.settings.show_suggested_products %}
+  <section class="featured-collection">
+    <div class="container">
+
+      {% comment %}
+      ------------------------------------------------------------------------------
+      Section Heading
+      ------------------------------------------------------------------------------
+      {% endcomment %}
+      {% if section.settings.fc_heading %}
+        <h2 class="featured-collection__heading section-heading">{{ section.settings.fc_heading }}</h2>
+      {% endif %}
+
+      {% comment %}
+      ------------------------------------------------------------------------------
+      Product card grid
+      ------------------------------------------------------------------------------
+      {% endcomment %}
+      <div class="flexgrid flexgrid--guttered" itemscope itemtype="http://schema.org/ItemList">
+        <meta itemprop="numberOfItems" content="3">
+        {% assign collection = collections[section.settings.fc_collection] %}
+        {% for product in collection.products limit: 3 %}
+          {% include 'product-card', product: product %}
+        {% endfor %}
+      </div>
+      {% comment %} /.flexgrid {% endcomment %}
+    </div>
+    {% comment %} /.container {% endcomment %}
+  </section>
+{% endif %}
+
+{% schema %}
+	{
+		"name": "Cart Page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Suggested Products"
+      },
+      {
+        "id": "show_suggested_products",
+        "label": "Show suggested products?",
+        "type": "checkbox",
+        "default": true
+      },
+      {
+        "id": "fc_heading",
+        "label": "Suggested Products Heading",
+        "type": "text",
+        "label": "Optional"
+      },
+      {
+        "id": "fc_collection",
+        "label": "Suggested Collection",
+        "type": "collection",
+        "label": "Collection to pull products from"
+      }
+    ]
+	}
+{% endschema %}

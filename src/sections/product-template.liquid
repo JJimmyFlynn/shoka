@@ -7,7 +7,7 @@
 
 
 <section class="product" itemscope itemtype="http://schema.org/Product" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
-	
+
 	{% comment %}
 	------------------------------------------------------------------------------
 	Schema.org Product Info
@@ -20,7 +20,7 @@
   <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
 
 	<div class="container">
-		
+
 		{% comment %}
 		------------------------------------------------------------------------------
 		Product Breacrumbs
@@ -39,7 +39,7 @@
 
 		<div class="flexgrid flexgrid--guttered">
 			<div class="flexgrid__item product-photos one-whole one-half--medium-up">
-				
+
 				{% comment %}
 				------------------------------------------------------------------------------
 				Product Image Slider
@@ -119,7 +119,7 @@
 							</s>
 						{% endif %}
 					</div>
-					
+
 					{% comment %}
 					------------------------------------------------------------------------------
 					Product Form
@@ -212,7 +212,9 @@
 	Related Products
 	------------------------------------------------------------------------------
 	{% endcomment %}
-	{% include 'related-products' %}
+  {% if collection %}
+    {% include 'related-products' %}
+  {% endif %}
 
 	{% comment %}
 	------------------------------------------------------------------------------
@@ -225,3 +227,9 @@
     </script>
   {% endunless %}
 </section>
+
+{% schema %}
+	{
+		"name": "Product Page"
+	}
+{% endschema %}

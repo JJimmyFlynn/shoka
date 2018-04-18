@@ -1,10 +1,10 @@
 @charset 'UTF-8';
-/*============================================================================
-  Shoka | Built with Slate
-    - You cannot use native CSS/Sass @imports in this file without a build script
-    - Do not use nested BEM Selector, Shopify uses an outdated version of SASS
-      which cannot compile them 
-==============================================================================*/
+//--------------------------------------------------------------
+// Shoka | Built with Slate
+// - You cannot use native CSS/Sass @imports in this file without a build script
+// - Do not use nested BEM Selector, Shopify uses an outdated version of SASS
+//   which cannot compile them
+//--------------------------------------------------------------
 
 //-----------------------------------------
 // Utils
@@ -12,7 +12,7 @@
 @import url('tools/mixins.scss');
 
 //-----------------------------------------
-// Settinga
+// Settings
 //-----------------------------------------
 @import url('settings/variables.scss.liquid');
 
@@ -39,15 +39,20 @@
 @import url('global/responsive-tables.scss');
 
 //-----------------------------------------
+// Components
+//-----------------------------------------
+@import url('components/product-card.scss');
+@import url('components/article-card.scss');
+@import url('components/post-share.scss');
+@import url('components/pagination.scss');
+@import url('components/page-header.scss');
+
+//-----------------------------------------
 // Modules
 //-----------------------------------------
 @import url('modules/site-header.scss');
 @import url('modules/site-footer.scss');
 @import url('modules/gift-card-template.scss');
-@import url('modules/product-card.scss');
-@import url('modules/article-card.scss');
-@import url('modules/pagination.scss');
-@import url('modules/page-header.scss');
 
 //-----------------------------------------
 // Sections
@@ -60,3 +65,4 @@
 @import url('sections/product.scss');
 @import url('sections/collection.scss');
 @import url('sections/cart.scss');
+@import url('sections/article.scss');

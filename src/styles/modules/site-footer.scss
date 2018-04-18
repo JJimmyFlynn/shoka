@@ -2,46 +2,50 @@
   Site Footer Styles
 ========================================================================== */
 .site-footer {
-	padding: 3rem 0;
+  padding: 3rem 0;
 }
+
 .site-footer__heading {
-	margin-bottom: 1rem;
-	font-family: $font-stack-body;
-	font-size: 1.6rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  font-family: $font-stack-body;
 }
 
 .footer-column {
-	margin-bottom: $gutter;
-	@include breakpoint($medium--up) {
-		margin-bottom: 0;
-	}
-	&:last-of-type {
-		margin-bottom: 0;
-	}
+  margin-bottom: $gutter;
+
+  @include breakpoint($medium--up) {
+    margin-bottom: 0;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 //-----------------------------------------
 // Footer Social
 //-----------------------------------------
 .footer-social__item {
-	margin-right: 0.5rem;
-	&:last-of-type {
-		margin-right: 0;
-	}
+  margin-right: 0.5rem;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
 }
 
 //-----------------------------------------
 // Footer Navigation
 //-----------------------------------------
 .footer-nav__item {
-	display: block;
+  display: block;
 }
 
 //-----------------------------------------
 // Footer Newsletter
 //-----------------------------------------
 .site-footer__newsletter {
-	.form-success {
-		font-size: 1.4rem;
-	}
+  .form-success {
+    font-size: 1.4rem;
+  }
 }

@@ -1,0 +1,52 @@
+//--------------------------------------------------------------
+// Article Single
+//--------------------------------------------------------------
+.article-wrapper {
+  padding: $gutter 0;
+  background-color: $color-secondary;
+}
+
+.article-single {
+  padding: $gutter;
+  border-radius: $border-radius;
+  background-color: rgb(255, 255, 255);
+}
+
+.article-single__featured-image {
+  margin-bottom: $gutter;
+}
+
+.article-single__sharing {
+  margin-bottom: $gutter;
+  text-align: right;
+}
+
+
+//-----------------------------------------
+// Article Meta
+//-----------------------------------------
+.article-meta {
+  margin-bottom: $gutter;
+}
+
+.article-meta__title {
+  margin-bottom: 0;
+}
+
+//-----------------------------------------
+// Tags List
+//-----------------------------------------
+.tags-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tags-list__heading {
+  margin-bottom: 0;
+  font-weight: $font-weight-bold;
+}
+
+.tags-list__item {
+  display: inline-block;
+}

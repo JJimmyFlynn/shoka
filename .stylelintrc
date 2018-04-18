@@ -6,6 +6,8 @@
     "selector-max-type": null,
 		"scss/double-slash-comment-whitespace-inside": null,
     "selector-max-specificity": "0,4,0",
+    "selector-max-class": 3,
+    "selector-max-combinators": 2,
      "order/properties-order": null
   }
 }

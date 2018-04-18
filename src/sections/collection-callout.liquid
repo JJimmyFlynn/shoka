@@ -22,7 +22,7 @@
       <div class="collection-card flexgrid__item one-whole one-half--medium-up">
         <a href="{{ collection_1.url }}">
           <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: collection_1.image.aspect_ratio | times: 100 }}%;">
-            <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: collection_1.image %}" src="{{ collection_1.image | img_url }}" alt="{{ collection.image.alt }}">
+            <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: collection_1.image %}" src="{{ collection_1.image | img_url }}" alt="{{ collection_1.image.alt }}">
           </div>
           {% comment %} /.image-wrapper {% endcomment %}
           <div class="collection-card__overlay">
@@ -46,7 +46,7 @@
       <div class="collection-card flexgrid__item one-whole one-half--medium-up">
         <a href="{{ collection_2.url }}">
           <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: collection_2.image.aspect_ratio | times: 100 }}%;">
-            <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: collection_2.image %}" src="{{ collection_1.image | img_url }}" alt="{{ collection.image.alt }}">
+            <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: collection_2.image %}" src="{{ collection_2.image | img_url }}" alt="{{ collection_2.image.alt }}">
           </div>
           {% comment %} /.image-wrapper {% endcomment %}
           <div class="collection-card__overlay">

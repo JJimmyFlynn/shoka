@@ -53,3 +53,16 @@
     background-color: $color-disabled;
   }
 }
+
+//-----------------------------------------
+// Article Pagination
+//-----------------------------------------
+.article-pagination {
+  display: flex;
+  margin-top: $gutter;
+  color: $color-primary;
+}
+
+.article-pagination__next {
+  margin-left: auto;
+}

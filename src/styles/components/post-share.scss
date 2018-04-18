@@ -1,0 +1,25 @@
+//--------------------------------------------------------------
+// Styles for Post Share Component
+//--------------------------------------------------------------
+.post-share {
+  margin-bottom: $gutter;
+  padding-right: $gutter;
+  text-align: right;
+}
+
+.post-share__heading {
+  margin-bottom: 0.5rem;
+}
+
+.post-share__item {
+  margin-right: $gutter--small;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  .icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}

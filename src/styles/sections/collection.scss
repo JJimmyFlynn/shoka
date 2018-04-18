@@ -19,6 +19,24 @@
 }
 
 //-----------------------------------------
+// List of collections
+//-----------------------------------------
+.collections-list {
+  .collection-card {
+    margin-bottom: $gutter;
+  }
+}
+
+//-----------------------------------------
+// Collection Descriptions
+//-----------------------------------------
+.collection__description {
+  margin: 0 auto;
+  max-width: 70rem;
+  text-align: center;
+}
+
+//-----------------------------------------
 // Colelction Actions
 //-----------------------------------------
 .collection__actions {

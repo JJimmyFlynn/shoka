@@ -1,4 +1,6 @@
-/*================ Giftcard Template ================*/
+//--------------------------------------------------------------
+// Gift Card Template
+//--------------------------------------------------------------
 .giftcard-qr {
   img {
     display: block;
@@ -11,7 +13,9 @@
   margin: 0 auto;
 }
 
-/*================ Print Giftcard Styles ================*/
+//-----------------------------------------
+// Print Gift Card Styles
+//-----------------------------------------
 @media print {
   @page {
     margin: 0.5cm;
@@ -24,9 +28,8 @@
 
   html,
   body {
-    // sass-lint:disable no-color-literals
-    background-color: #fff;
-    color: #000;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
   }
 
   .print-giftcard,

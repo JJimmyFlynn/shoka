@@ -74,6 +74,9 @@
   {% endcomment %}
   <div class="site-header__item site-header__cart">
     <a href="/cart" class="cart-toggle">
+      {% if cart.item_count > 0 %}
+        <span class="cart-counter">{{ cart.item_count }}</span>
+      {% endif %}
       {% include 'icon-cart' %}
     </a>
   </div>

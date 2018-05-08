@@ -1,0 +1,99 @@
+//--------------------------------------------------------------
+// Slide Nav Styles
+//--------------------------------------------------------------
+.slide-nav,
+.slide-nav__panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 32rem;
+  height: 100%;
+  background-color: $color-primary;
+  color: white;
+  transition: transform 0.2s ease-out;
+  transform: translateX(-32rem);
+}
+
+.slide-nav {
+  .nav-open & {
+    transform: translateX(0);
+  }
+}
+
+//-----------------------------------------
+// Nav Panel
+//-----------------------------------------
+.slide-nav__panel {
+  background-color: darken($color-primary, 8%);
+  
+  &.is-open {
+    transform: translateX(0);
+  }
+
+  .slide-nav__item {
+    border-bottom: 1px solid darken($color-primary, 12%);
+  }
+}
+
+//-----------------------------------------
+// Nav Items
+//-----------------------------------------
+.slide-nav__item {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid darken($color-primary, 8%);
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: darken($color-primary, 8%);
+    color: inherit;
+    
+    .icon {
+      transform: translateX(1rem);
+    }
+  }
+
+  .icon {
+    margin-left: auto;
+    width: 3rem;
+    height: 3rem;
+    transition: transform 0.3s ease;
+  }
+}
+
+//-----------------------------------------
+// Nav Close
+//-----------------------------------------
+.slide-nav__close {
+  padding: 1.5rem;
+  border-bottom: 1px solid darken($color-primary, 8%);
+
+  .icon {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+  }
+}
+
+//-----------------------------------------
+// Nav Blocker
+//-----------------------------------------
+.nav-blocker {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $z-index-header;
+  display: none;
+  background-color: rgba(black, 0.4);
+}
+
+//-----------------------------------------
+// Body w/ Nav Open
+//-----------------------------------------
+.nav-open {
+  overflow: hidden;
+}

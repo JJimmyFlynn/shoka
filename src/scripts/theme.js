@@ -20,6 +20,7 @@ window.shoka = window.shoka || {};
 /*================ Templates ================*/
 // =require templates/customers-addresses.js
 // =require templates/customers-login.js
+// =require templates/slide-nav.js
 
 $(document).ready(function() {
   var sections = new slate.Sections();

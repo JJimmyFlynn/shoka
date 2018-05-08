@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     {% comment %} No crawlers for smaple site {% endcomment %}
-    <meta name="robots" content="noindex, nofollow"> 
+    <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="{{ settings.color_primary }}">
     <link rel="canonical" href="{{ canonical_url }}">
@@ -69,6 +69,7 @@
 
     <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
+    <div class="site-wrapper">
     {% section 'header' %}
 
     <main role="main" role="main" id="MainContent">
@@ -76,6 +77,33 @@
     </main>
 
     {% section 'footer' %}
+
+    <div class="nav-blocker" data-nav-blocker></div>
+
+    </div>
+    {% comment %} /.site-wrapper {% endcomment %}
+
+    <aside class="slide-nav" data-slide-nav>
+      <nav class="slide-nav__main-panel">
+        <div class="slide-nav__close" data-slide-nav-close>
+          {% include 'icon-close' %}
+        </div>
+        <a href="#0" class="slide-nav__item">Item 1</a>
+        <a href="#0" class="slide-nav__item" data-has-sub-nav data-nav-panel="item-2">Item 2 {% include 'icon-arrow-right' %}</a>
+        <a href="#0" class="slide-nav__item">Item 3 {% include 'icon-arrow-right' %}</a>
+        <a href="#0" class="slide-nav__item">Item 4</a>
+      </nav>
+
+      <nav class="slide-nav__panel" data-nav-panel="item-2">
+        <div class="slide-nav__close" data-nav-panel-close>
+          {% include 'icon-arrow-left' %}
+        </div>
+        <a href="#0" class="slide-nav__item">Panel Item 1</a>
+        <a href="#0" class="slide-nav__item">Panel Item 2</a>
+        <a href="#0" class="slide-nav__item">Panel Item 3</a>
+        <a href="#0" class="slide-nav__item">Panel Item 4</a>
+      </nav>
+    </aside>
 
   </body>
 </html>

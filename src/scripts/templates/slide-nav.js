@@ -7,7 +7,8 @@ shoka.slideNav = (function() {
     slideNavPanelClose: '[data-nav-panel-close]',
     hasSubNav: '[data-has-sub-nav]',
     navBlocker: '[data-nav-blocker]',
-    slideNavOpen: '[data-nav-open]'
+    slideNavOpen: '[data-nav-open]',
+    allNavToggles: '[data-slide-nav-close], [data-nav-blocker], [data-nav-open]'
   }
 
   /**
@@ -31,33 +32,11 @@ shoka.slideNav = (function() {
   });
 
   /**
-   * Close slide nav
+   * Open/Close the nav when toggles are triggered
    */
-  $(selectors.slideNavClose).on('click', function() {
-    closeNav();
+  $(selectors.allNavToggles).on('click', function() {
+    $(selectors.navBlocker).fadeToggle();
+    $('body').toggleClass('nav-open');
   });
 
-  /**
-   * Close Slide Nav
-   */
-  $(selectors.navBlocker).on('click', function() {
-    closeNav();
-  });
-
-  /**
-   * Open Slide Nav
-   */
-  $(selectors.slideNavOpen).on('click', function() {
-    openNav();
-  });
-
-  function closeNav() {
-    $(selectors.navBlocker).fadeOut();
-    $('body').removeClass('nav-open');
-  }
-
-  function openNav() {
-    $(selectors.navBlocker).fadeIn();
-    $('body').addClass('nav-open');
-  }
 } )();

@@ -17,10 +17,8 @@ window.shoka = window.shoka || {};
 // =require sections/header.js
 // =require sections/collection.js
 
-/*================ Templates ================*/
-// =require templates/customers-addresses.js
-// =require templates/customers-login.js
-// =require templates/slide-nav.js
+/*================ Modules ================*/
+// =require modules/slide-nav.js
 
 $(document).ready(function() {
   var sections = new slate.Sections();

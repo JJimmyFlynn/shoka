@@ -180,6 +180,42 @@
       <div class="supports-no-cookies">
         <p class="h1 empty-cart__heading">Enable cookies to use the shopping cart</p>
       </div>
+
+      {% comment %}
+      ------------------------------------------------------------------------------
+      Suggested Products
+      ------------------------------------------------------------------------------
+      {% endcomment %}
+      {% if section.settings.show_suggested_products %}
+        <section class="featured-collection">
+          <div class="container">
+
+            {% comment %}
+            ------------------------------------------------------------------------------
+            Section Heading
+            ------------------------------------------------------------------------------
+            {% endcomment %}
+            {% if section.settings.fc_heading %}
+              <h2 class="featured-collection__heading section-heading">{{ section.settings.fc_heading }}</h2>
+            {% endif %}
+
+            {% comment %}
+            ------------------------------------------------------------------------------
+            Product card grid
+            ------------------------------------------------------------------------------
+            {% endcomment %}
+            <div class="flexgrid flexgrid--guttered" itemscope itemtype="http://schema.org/ItemList">
+              <meta itemprop="numberOfItems" content="3">
+              {% assign collection = collections[section.settings.fc_collection] %}
+              {% for product in collection.products limit: 3 %}
+                {% include 'product-card', product: product %}
+              {% endfor %}
+            </div>
+            {% comment %} /.flexgrid {% endcomment %}
+          </div>
+          {% comment %} /.container {% endcomment %}
+        </section>
+      {% endif %}
     {% endif %}
     </div>
     {% comment %} /.container {% endcomment %}
@@ -187,37 +223,6 @@
   {% comment %} /.cart-wrapper {% endcomment %}
 
 </section>
-
-{% if section.settings.show_suggested_products %}
-  <section class="featured-collection">
-    <div class="container">
-
-      {% comment %}
-      ------------------------------------------------------------------------------
-      Section Heading
-      ------------------------------------------------------------------------------
-      {% endcomment %}
-      {% if section.settings.fc_heading %}
-        <h2 class="featured-collection__heading section-heading">{{ section.settings.fc_heading }}</h2>
-      {% endif %}
-
-      {% comment %}
-      ------------------------------------------------------------------------------
-      Product card grid
-      ------------------------------------------------------------------------------
-      {% endcomment %}
-      <div class="flexgrid flexgrid--guttered" itemscope itemtype="http://schema.org/ItemList">
-        <meta itemprop="numberOfItems" content="3">
-        {% assign collection = collections[section.settings.fc_collection] %}
-        {% for product in collection.products limit: 3 %}
-          {% include 'product-card', product: product %}
-        {% endfor %}
-      </div>
-      {% comment %} /.flexgrid {% endcomment %}
-    </div>
-    {% comment %} /.container {% endcomment %}
-  </section>
-{% endif %}
 
 {% schema %}
 	{

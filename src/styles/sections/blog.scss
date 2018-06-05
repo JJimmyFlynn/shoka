@@ -1,0 +1,11 @@
+//--------------------------------------------------------------
+// Blog Index Styles
+//--------------------------------------------------------------
+.blog__list {
+  padding: 3rem 0 1rem;
+  background-color: $color-secondary;
+
+  .article-card {
+    margin-bottom: $gutter;
+  }
+}

@@ -83,27 +83,6 @@
     </div>
     {% comment %} /.site-wrapper {% endcomment %}
 
-    <aside class="slide-nav" data-slide-nav>
-      <nav class="slide-nav__main-panel">
-        <div class="slide-nav__close" data-slide-nav-close>
-          {% include 'icon-close' %}
-        </div>
-        <a href="#0" class="slide-nav__item">Item 1</a>
-        <a href="#0" class="slide-nav__item" data-has-sub-nav data-nav-panel="item-2">Item 2 {% include 'icon-arrow-right' %}</a>
-        <a href="#0" class="slide-nav__item">Item 3 {% include 'icon-arrow-right' %}</a>
-        <a href="#0" class="slide-nav__item">Item 4</a>
-      </nav>
-
-      <nav class="slide-nav__panel" data-nav-panel="item-2">
-        <div class="slide-nav__close" data-nav-panel-close>
-          {% include 'icon-arrow-left' %}
-        </div>
-        <a href="#0" class="slide-nav__item">Panel Item 1</a>
-        <a href="#0" class="slide-nav__item">Panel Item 2</a>
-        <a href="#0" class="slide-nav__item">Panel Item 3</a>
-        <a href="#0" class="slide-nav__item">Panel Item 4</a>
-      </nav>
-    </aside>
-
+    {% include 'slide-nav' %}
   </body>
 </html>

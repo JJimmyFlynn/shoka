@@ -61,7 +61,7 @@
       {% endif %}
       <span itemprop="price" content="{{ product.price_max | money }}">{{ product.price_max | money }}</span>{% if product.price < product.compare_at_price_max %}<span class="product-card__compare-price"><s>{{ product.compare_at_price | money }}</s></span>{% endif %}
     </p>
-    
+
     {% comment %}
     ------------------------------------------------------------------------------
     Product card notices

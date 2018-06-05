@@ -27,7 +27,7 @@
           {% comment %} /.image-wrapper {% endcomment %}
           <div class="collection-card__overlay">
             <div class="collection-card__overlay-content">
-              <h3 class="collection-card__heading has-sub-heading">{{ section.settings.cc_heading_1 }}</h3>
+              <h3 class="collection-card__heading{% unless section.settings.cc_sub_heading_1 == blank %} has-sub-heading{% endunless %}">{{ section.settings.cc_heading_1 }}</h3>
               {% unless section.settings.cc_sub_heading_1 == blank %}
                 <p class="collection-card__sub-heading">{{ section.settings.cc_sub_heading_1 }}</p>
               {% endunless %}
@@ -51,7 +51,7 @@
           {% comment %} /.image-wrapper {% endcomment %}
           <div class="collection-card__overlay">
             <div class="collection-card__overlay-content">
-              <h3 class="collection-card__heading">{{ section.settings.cc_heading_2 }}</h3>
+              <h3 class="collection-card__heading {% unless section.settings.cc_sub_heading_2 == blank %} has-sub-heading{% endunless %}">{{ section.settings.cc_heading_2 }}</h3>
               {% unless section.settings.cc_sub_heading_2 == blank %}
                 <p class="collection-card__sub-heading">{{ section.settings.cc_sub_heading_2 }}</p>
               {% endunless %}

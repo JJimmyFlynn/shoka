@@ -1,0 +1,27 @@
+<aside class="slide-nav" data-slide-nav>
+    <nav class="slide-nav__main-panel">
+      <div class="slide-nav__close" data-slide-nav-close>
+        {% include 'icon-close' %}
+      </div>
+      {% for item in linklists.main-menu.links %}
+        {% if item.links != blank %}
+          <a href="{{ item.url }}" class="slide-nav__item" data-has-sub-nav data-nav-panel="{{ item.title | handleize }}">{{ item.title }} {% include 'icon-arrow-right' %}</a>
+          {% else %}
+            <a href="{{ item.url }}" class="slide-nav__item">{{ item.title }}</a>
+        {% endif %}
+      {% endfor %}
+    </nav>
+
+    {% for item in linklists.main-menu.links %}
+      {% if item.links != blank %}
+        <nav class="slide-nav__panel" data-nav-panel="{{ item.title | handleize }}">
+          <div class="slide-nav__close" data-nav-panel-close>
+            {% include 'icon-arrow-left' %}
+          </div>
+          {% for child in item.links %}
+            <a href="{{ child.url }}" class="slide-nav__item">{{ child.title }}</a>
+          {% endfor %}
+        </nav>
+      {% endif %}
+    {% endfor %}
+</aside>

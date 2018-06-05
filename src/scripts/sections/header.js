@@ -18,7 +18,7 @@ shoka.SiteHeader = (function() {
     // Setup section variavles as required by Slate
     this.$container = $(container);
     var sectionId = this.$container.attr('data-section-id');
-    
+
     // Initialize Stickybits
     stickybits(document.getElementById('shopify-section-header'));
   }

@@ -1,126 +1,129 @@
 //--------------------------------------------------------------
 // Product Page Styles
 //--------------------------------------------------------------
-.product {
-	padding-top: $gutter;
-}
-
-//-----------------------------------------
-// Product Breadcrumbs
-//-----------------------------------------
-.breadcrumbs {
-	margin-bottom: 2rem;
-	font-size: 1.4rem;
-}
-.breadcrumbs__arrow .icon {
-	width: 1.5rem;
-	height: 1.5rem;
-}
 
 //-----------------------------------------
 // Product Photos
 //-----------------------------------------
 .product-photos {
-	margin-bottom: 2rem;
-	@include breakpoint($medium--up) {
-		margin-bottom: 0;
-	}
+  margin-bottom: 2rem;
+
+  @include breakpoint($medium--up) {
+    margin-bottom: 0;
+  }
 }
+
 .product-thumbnails__item {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 //-----------------------------------------
 // Product Details
 //-----------------------------------------
 .product-details__title {
-	margin-bottom: 0;
-	font-size: 3.2rem;
-	line-height: 1.2;
+  margin-bottom: 0;
+  font-size: 3.2rem;
+  line-height: 1.2;
 }
+
 //-----------------------------------------
 // Product Meta
 //-----------------------------------------
 .product-details__type,
 .product-details__vendor,
 .product-details__meta-separator {
-	display: inline-block;
-	font-size: 2rem;
+  display: inline-block;
+  font-size: 2rem;
 }
+
 //-----------------------------------------
 // Product Sale Notice
 //-----------------------------------------
 .product-details__notices {
-	margin: 0.5rem 0;
-	.on-sale {
-		padding: 0.5rem 0.8rem;
-		font-size: 1.2rem;
-		color: white;
-		border-radius: $border-radius;
-		background-color: $color-primary;
-	}
+  margin: 0.5rem 0;
+
+  .on-sale {
+    padding: 0.5rem 0.8rem;
+    border-radius: $border-radius;
+    background-color: $color-primary;
+    color: white;
+    font-size: 1.2rem;
+  }
 }
+
 //-----------------------------------------
 // Product Price
 //-----------------------------------------
 .product-details__price-wrapper {
-	margin-bottom: 1rem;
-	font-size: 2.4rem;
+  margin-bottom: 1rem;
+  font-size: 2.4rem;
 }
+
 .product-details__price {
-	margin-right: 0.5rem;
-	font-weight: 700;
+  margin-right: 0.5rem;
+  font-weight: 700;
 }
+
 .product-details__compare-price {
-	color: $color-disabled;
+  color: $color-disabled;
 }
+
 //-----------------------------------------
 // Form Elements
 //-----------------------------------------
 .product-details__form {
-	margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
+
 .product-details__form-label {
-	display: block;
+  display: block;
 }
-.product-details__option-select { 
-	margin-bottom: 1rem;
-	select {
-		width: 100%;
-	}
+
+.product-details__option-select {
+  margin-bottom: 1rem;
+
+  select {
+    width: 100%;
+  }
 }
+
 .product-details__quantity {
-	width: 100%;
-	margin-bottom: 1rem;
-	padding: 1.4rem 1rem;
-	border-width: 2px;
-	border-radius: $border-radius;
-	@include breakpoint($small--up) {
-		margin-bottom: 0;
-	}
-	&:hover,
-	&:focus {
-		border-color: $color-primary;
-		outline: none;
-	}
+  margin-bottom: 1rem;
+  padding: 1.4rem 1rem;
+  width: 100%;
+  border-width: 2px;
+  border-radius: $border-radius;
+
+  @include breakpoint($small--up) {
+    margin-bottom: 0;
+  }
+
+  &:hover,
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+  }
 }
+
 .product-details__add-wrapper {
-	align-self: flex-end;
+  align-self: flex-end;
 }
+
 .product-details__add-to-cart {
-	width: 100%;
-	vertical-align: initial;
+  width: 100%;
+  vertical-align: initial;
 }
 
 //-----------------------------------------
 // Related Products
 //-----------------------------------------
 .related-products {
-	margin-top: 3rem;
-	padding: 3rem 0;
-	background-color: $color-secondary;
-	.section-heading {
-		font-size: 3.2rem;
-		text-align: center;
-	}
+  margin-top: 3rem;
+  padding: 3rem 0;
+  background-color: $color-secondary;
+
+  .section-heading {
+    text-align: center;
+    font-size: 3.2rem;
+  }
 }

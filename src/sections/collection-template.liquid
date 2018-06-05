@@ -1,11 +1,23 @@
 <section class="collection" data-section-type="collection" data-section-id="{{ section.id }}">
 	<div class="container">
+
+    {% comment %}
+    ------------------------------------------------------------------------------
+    Breadcrumbs
+    ------------------------------------------------------------------------------
+    {% endcomment %}
 		<div class="breadcrumbs collection__breadcrumbs">
 			<a href="{{ shop.url }}" class="breadcrumbs__link">Home</a>
 			<span class="breadcrumbs__arrow">{% include 'icon-arrow-right' %}</span>
 			<a href="{{ collection.url }}" class="breadcrumbs__link">{{ collection.title }}</a>
 		</div>
 		{% comment %} /.breadcrumbs {% endcomment %}
+
+    {% comment %}
+    ------------------------------------------------------------------------------
+    Page Header
+    ------------------------------------------------------------------------------
+    {% endcomment %}
 		<header class="page-header collection-header">
 			<h1 class="page-header__title">{{ collection.title }}</h1>
 			{% if collection.description != blank %}
@@ -15,6 +27,11 @@
 			{% endif %}
 		</header>
 
+    {% comment %}
+    ------------------------------------------------------------------------------
+    Colletion Actions
+    ------------------------------------------------------------------------------
+    {% endcomment %}
 		<div class="collection__actions">
 			<div class="collection__vendors collection__action-block">
 				<label for="vendor-sort">Vendor:</label>
@@ -45,6 +62,12 @@
 		{% comment %} /.collection__actions {% endcomment %}
 	</div>
 	{% comment %} /.container {% endcomment %}
+
+  {% comment %}
+  ------------------------------------------------------------------------------
+  Collection List
+  ------------------------------------------------------------------------------
+  {% endcomment %}
 	<div class="collection__list">
 		<div class="container">
 			{% paginate collection.products by 12 %}
@@ -54,13 +77,19 @@
 						{% endfor %}
 				</div>
 				{% comment %} /.flexgird {% endcomment %}
+
+        {% comment %}
+        ------------------------------------------------------------------------------
+        Pagination
+        ------------------------------------------------------------------------------
+        {% endcomment %}
         {% if paginate.pages > 1 %}
           <div class="pagination-wrapper collection-pagination">
             {{ paginate | default_pagination: next: "Next", previous: "Previous" }}
           </div>
         {% comment %} /.pagination-wrapper {% endcomment %}
         {% endif %}
-			{% endpaginate %}	
+			{% endpaginate %}
 		</div>
 		{% comment %} /.container {% endcomment %}
 	</div>

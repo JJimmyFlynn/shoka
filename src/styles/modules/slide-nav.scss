@@ -33,6 +33,10 @@
 
   .slide-nav__item {
     border-bottom: 1px solid darken($color-primary, 12%);
+
+    &:hover {
+      background-color: darken($color-primary, 12%);
+    }
   }
 }
 

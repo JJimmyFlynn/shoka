@@ -7,27 +7,30 @@
     <h1 class="page-header__title">{{ page_title }}</h1>
   </header>
 
-  <div class="flexgrid collections-list">
-    {% for collection in collections %}
-      {% unless collection.handle == 'frontpage' %}
-        <div class="collection-card flexgrid__item one-whole one-half--medium-up">
-          <a href="{{ collection.url }}">
-            <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: collection.image.aspect_ratio | times: 100 }}%;">
-              <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: collection.image %}" src="{{ collection.image | img_url }}" alt="{{ collection.image.alt }}">
-            </div>
-            {% comment %} /.image-wrapper {% endcomment %}
-            <div class="collection-card__overlay">
-              <div class="collection-card__overlay-content">
-                <h3 class="collection-card__heading">{{ collection.title }}</h3>
+  <div class="collection-list">
+    <div class="flexgrid">
+      {% for collection in collections %}
+        {% unless collection.handle == 'frontpage' %}
+          <div class="collection-card flexgrid__item one-whole one-half--medium-up">
+            <a href="{{ collection.url }}">
+              <div class="image-wrapper" style="padding-bottom: {{ 1 | divided_by: collection.image.aspect_ratio | times: 100 }}%;">
+                <img class="is-lazyloaded lazyload" data-sizes="auto" data-srcset="{% include 'srcset', image: collection.image %}" src="{{ collection.image | img_url }}" alt="{{ collection.image.alt }}">
               </div>
-            </div>
-            {% comment %} /__overlay {% endcomment %}
-          </a>
-        </div>
-        {% comment %} /.collection-card {% endcomment %}
-      {% endunless %}
-    {% endfor %}
+              {% comment %} /.image-wrapper {% endcomment %}
+              <div class="collection-card__overlay">
+                <div class="collection-card__overlay-content">
+                  <h3 class="collection-card__heading">{{ collection.title }}</h3>
+                </div>
+              </div>
+              {% comment %} /__overlay {% endcomment %}
+            </a>
+          </div>
+          {% comment %} /.collection-card {% endcomment %}
+        {% endunless %}
+      {% endfor %}
+    </div>
+    {% comment %} /.flexgrid {% endcomment %}
   </div>
-  {% comment %} /.collection__list {% endcomment %}
+  {% comment %} /.collection-list {% endcomment %}
 </div>
 {% comment %} /.container {% endcomment %}

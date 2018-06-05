@@ -7,7 +7,7 @@
  */
 
  shoka.HeroSlider = (function() {
-  
+
   /**
    * Hero Slider section constructor. Runs on page load as well as Theme Editor
    * `section:load` events.
@@ -40,12 +40,12 @@
    * Extend HeroSlider to include Shopify Section events
    */
   HeroSlider.prototype = $.extend({}, HeroSlider.prototype, {
-    
+
     onBlockSelect: function(evt) {
       // Find the block the user selected
       var slideId = evt.detail.blockId;
       var slideIndex = $('.hero-slide--' + slideId).data('slick-index');
-      
+
       // Go to the selected block and pause the slider
       this.$heroSlider.slick('slickGoTo', slideIndex);
       this.$heroSlider.slick('slickPause');

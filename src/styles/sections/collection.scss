@@ -19,6 +19,8 @@
 // List of collections
 //-----------------------------------------
 .collections-list {
+  background-color: $color-secondary;
+  
   .collection-card {
     margin-bottom: $gutter;
   }

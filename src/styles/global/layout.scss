@@ -37,6 +37,20 @@ li {
 }
 
 //-----------------------------------------
+// Single Page
+//-----------------------------------------
+.page-wrapper {
+  padding: $gutter 0;
+  background-color: $color-secondary;
+}
+
+.single-page {
+  padding-bottom: $gutter;
+  border-radius: $border-radius;
+  background-color: white;
+}
+
+//-----------------------------------------
 // Tables
 //-----------------------------------------
 table {

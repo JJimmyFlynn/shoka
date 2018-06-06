@@ -32,7 +32,9 @@
     this.$heroSlider.slick({
       arrows: false,
       dots: true,
-      appendDots: $('#heroSliderDots')
+      appendDots: $('#heroSliderDots'),
+      autoplay: true,
+      autoplaySpeed: 5000
     });
   }
 

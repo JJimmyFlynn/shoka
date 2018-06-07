@@ -34,7 +34,7 @@
       dots: true,
       appendDots: $('#heroSliderDots'),
       autoplay: true,
-      autoplaySpeed: 5000
+      autoplaySpeed: 8000
     });
   }
 
@@ -60,7 +60,7 @@
 
     onUnload: function() {
       // Detch event listeners
-      $this.$heroSlider.off(this.namespace);
+      this.$heroSlider.off(this.namespace);
     }
   });
 

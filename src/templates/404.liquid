@@ -1,2 +1,13 @@
-<h1>{{ 'general.404.title' | t }}</h1>
-<p>{{ 'general.404.subtext_html' | t }}</p>
+<div class="page-wrapper">
+  <article class="container container--small single-page">
+    <header class="page-header collection-header">
+      <h1 class="page-header__title">Error - Page Not Found</h1>
+    </header>
+
+    <div class="rte page-content">
+      <p>The page you're looking has moved or never existed. <a href="{{ shop.url }}">Click here to return to the homepage</a>.</p>
+    </div>
+    {% comment %} /.page-content {% endcomment %}
+  </article>
+</div>
+{% comment %} /.page-wrapper {% endcomment %}
